@@ -7,7 +7,7 @@ export default async (req, res) => {
       const todo = await axios.get(url);
       res.send(todo.data);
     } catch (error) {
-      console.log(error.stack);
+      console.log(error);
     }
   } else {
     res.status(200).json({ name: 'John Doe' });
