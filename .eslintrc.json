@@ -19,6 +19,7 @@
   },
   "plugins": ["react", "@typescript-eslint"],
   "rules": {
-    "no-unused-vars": 1
+    "no-unused-vars": 1,
+    "react/react-in-jsx-scope": "off"
   }
 }
