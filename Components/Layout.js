@@ -8,7 +8,7 @@ const Layout = ({ children }) => {
 
   return (
     <Flex direction="column" minH="100%">
-      <Header h="4rem" />
+      {/* <Header h="4rem" /> */}
       <Box
         color="black"
         flex="1"
