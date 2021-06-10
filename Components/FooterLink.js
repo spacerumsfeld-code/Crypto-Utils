@@ -5,3 +5,5 @@ const FooterLink = ({ icon, href, label }) => (
     <Icon as={icon} fontSize="xl" color="gray.400" />
   </Link>
 );
+
+export default FooterLink;
