@@ -9,22 +9,23 @@ const theme = extendTheme({
     body: 'Menlo'
   },
   colors: {
-
+    brand: {
+      white: '#002451',
+      positive: '#d1f1a9',
+      negative: '#d54e53',
+      orange: '#ffc58f'
+    }
   }
 });
 
 export default theme;
 
-
 /*
 #7aa6da
-yellow
-bg color #002451
 lighter yellow #ffeead
 light purple #ebbbff
-orange #ffc58f
-red negative tweets #d54e53
-light green positive tweets #d1f1a9
+
+
 
 /*
 button styling
@@ -43,4 +44,4 @@ button styling
   background-size: 400%;
   -webkit-transition: background 300ms ease-in-out;
   transition: background 300ms ease-in-out;
-}
+}*/
