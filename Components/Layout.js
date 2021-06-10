@@ -19,7 +19,7 @@ const Layout = ({ children }) => {
       >
         {children}
       </Box>
-      <Footer h="2rem" />
+      <Footer h="3rem" />
     </Flex>
   );
 };

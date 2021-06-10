@@ -1,15 +1,37 @@
-import { Link, Icon, Flex, Text, Stack } from '@chakra-ui/react';
+import { Flex, Text, Stack } from '@chakra-ui/react';
+import { DiGithubBadge } from 'react-icons/di';
+import { IoLogoLinkedin } from 'react-icons/io';
+import { MdEmail } from 'react-icons/md';
+
+import FooterLink from './FooterLink';
+
+const links = [
+  {
+    icon: DiGithubBadge,
+    label: 'github',
+    href: 'https://github.com/spacerumsfeld-code'
+  },
+  {
+    icon: IoLogoLinkedin,
+    label: 'linkedin',
+    href: 'https://www.linkedin.com/in/nicholas-papadakis/'
+  },
+  {
+    icon: MdEmail,
+    label: 'email',
+    href: 'mailto:nickfin2014@gmail.com'
+  }
+];
 
 const Footer = ({ h }) => {
   return (
     <Flex h={h} justifyContent="center" alignItems="center">
-      <Text fontSize="sm">
-        Made by{' '}
-        <Link display="inline=block" href="https://www.google.com">
-          <Text fontSize="sm">Nick Papadakis</Text>
-        </Link>
-      </Text>
-      <Stack></Stack>
+      <Text fontSize="sm">Made by Nick Papadakis</Text>
+      <Stack ml={2} direction="row">
+        {links.map((link) => {
+          return <FooterLink key={link.href} {...link} />;
+        })}
+      </Stack>
     </Flex>
   );
 };
