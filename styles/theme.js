@@ -10,23 +10,18 @@ const theme = extendTheme({
   },
   colors: {
     brand: {
-      text: '#ebbbff',
+      text1: '#ebbbff',
+      text2: '#7aa6da',
       bg: '#002451',
       positive: '#d1f1a9',
       negative: '#d54e53',
-      orange: '#ffc58f'
+      orange: '#ffc58f',
+      yellow: '#ffeead'
     }
   }
 });
 
 export default theme;
-
-/*
-#7aa6da
-lighter yellow #ffeead
-light purple #ebbbff
-
-
 
 /*
 button styling
