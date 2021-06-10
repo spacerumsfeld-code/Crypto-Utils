@@ -5,7 +5,7 @@ import { Box, Text } from '@chakra-ui/react';
 export default function Home() {
   return (
     // eslint-disable-next-line no-undef
-    <Box color="brand.text">
+    <Box h="100%" w="100%" color="brand.text">
       <Head>
         <title>To The Moon</title>
         <meta name="Home Page" content="CryptoDigest Home Page" />
