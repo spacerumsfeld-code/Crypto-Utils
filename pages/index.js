@@ -1,10 +1,11 @@
+/* eslint-disable no-undef */
 import Head from 'next/head';
 import { Box, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
     // eslint-disable-next-line no-undef
-    <Box height={100}>
+    <Box color="brand.text">
       <Head>
         <title>To The Moon</title>
         <meta name="Home Page" content="CryptoDigest Home Page" />
