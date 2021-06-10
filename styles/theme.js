@@ -7,6 +7,9 @@ const theme = extendTheme({
   },
   fonts: {
     body: 'Menlo'
+  },
+  colors: {
+
   }
 });
 
