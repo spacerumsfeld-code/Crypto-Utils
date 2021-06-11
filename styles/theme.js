@@ -6,7 +6,7 @@ const theme = extendTheme({
     useSystemColorMode: true
   },
   fonts: {
-    body: 'Menlo'
+    body: 'Roboto'
   },
   colors: {
     brand: {
