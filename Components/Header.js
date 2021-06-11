@@ -1,7 +1,7 @@
 import {
   Flex,
   Heading,
-  Stack,
+  Box,
   Image,
   Link,
   useColorModeValue
@@ -23,7 +23,9 @@ const Header = ({ h }) => {
             Crypto Digest
           </Link>
         </Heading>
-        <ColorModeChanger />
+        <Box flex={1} ml={1}>
+          <ColorModeChanger />
+        </Box>
       </Flex>
     </Flex>
   );
