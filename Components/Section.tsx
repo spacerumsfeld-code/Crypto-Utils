@@ -1,7 +1,13 @@
 import { Box, Link, Heading, Image, Flex } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-const Section = ({ title, href, image }) => (
+type SectionProps = {
+  title: string;
+  href: string;
+  image: string;
+};
+
+const Section = ({ title, href, image }: SectionProps) => (
   <Link as={NextLink} href={href}>
     <Flex
       h="100%"
