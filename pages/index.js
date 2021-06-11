@@ -6,7 +6,7 @@ import { Box, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
-    <SimpleGrid>
+    <SimpleGrid w="100%" gap={8} mindWidthChild="21rem" gridAutoRows="1fr">
       <Head>
         <title>To The Moon</title>
         <meta name="Home Page" content="CryptoDigest Home Page" />
