@@ -3,7 +3,11 @@ import { Flex, Box, useColorModeValue } from '@chakra-ui/react';
 import Header from './Header';
 import Footer from './Footer';
 
-const Layout = ({ children }) => {
+type LayoutProps = {
+  children: React.ReactNode;
+};
+
+const Layout = ({ children }: LayoutProps) => {
   const bg = useColorModeValue('linkedin.100', 'gray.700');
 
   return (
