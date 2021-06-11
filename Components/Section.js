@@ -18,13 +18,7 @@ const Section = ({ title, href, image }) => (
       <Box flex={1}>
         <Image objectFit="contain" src={image} alt={title} />
       </Box>
-      <Heading
-        bgClip="text"
-        bgGradient="linear(to-t, green.200, pink.500)"
-        text-align="center"
-      >
-        {title}
-      </Heading>
+      <Heading text-align="center">{title}</Heading>
     </Flex>
   </Link>
 );
