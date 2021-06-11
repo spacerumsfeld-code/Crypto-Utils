@@ -1,11 +1,4 @@
-import {
-  Flex,
-  Heading,
-  Box,
-  Image,
-  Link,
-  useColorModeValue
-} from '@chakra-ui/react';
+import { Flex, Heading, Box, Link, useColorModeValue } from '@chakra-ui/react';
 
 import ColorModeChanger from './ColorModeChanger';
 

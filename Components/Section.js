@@ -4,13 +4,11 @@ import NextLink from 'next/link';
 const Section = ({ title, href, image }) => (
   <Link as={NextLink} href={href}>
     <Flex
-      w="90%"
       h="100%"
       flexDirection="column"
       alignItems="center"
       justifyContent="space-between"
       padding="1em"
-      border="1px solid white"
       borderRadius="8px"
       cursor="pointer"
       shadow="xl"

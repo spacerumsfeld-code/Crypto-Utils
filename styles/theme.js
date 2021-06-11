@@ -22,22 +22,3 @@ const theme = extendTheme({
 });
 
 export default theme;
-
-/*
-button styling
-
-.button:hover, .button:focus {
-  color: #fff;
-  outline: 0;
-}
-
-.button-bitcoin, .button-take-snapshot {
-  border-color: #ffeead;
-  color: #fff;
-  background-image: -webkit-linear-gradient(45deg, #ffeead 50%, transparent 50%);
-  background-image: linear-gradient(45deg, #ebbbff, 50%, transparent 50%);
-  background-position: 100%;
-  background-size: 400%;
-  -webkit-transition: background 300ms ease-in-out;
-  transition: background 300ms ease-in-out;
-}*/
