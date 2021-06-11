@@ -23,17 +23,15 @@ const links = [
   }
 ];
 
-const Footer = ({ h }) => {
-  return (
-    <Flex h={h} justifyContent="center" alignItems="center">
-      <Text fontSize="sm">Made by Nick Papadakis</Text>
-      <Stack ml={2} direction="row" spacing="12px">
-        {links.map((link) => {
-          return <FooterLink key={link.href} {...link} />;
-        })}
-      </Stack>
-    </Flex>
-  );
-};
+const Footer = ({ h }) => (
+  <Flex h={h} justifyContent="center" alignItems="center">
+    <Text fontSize="sm">Made by Nick Papadakis</Text>
+    <Stack ml={2} direction="row" spacing="12px">
+      {links.map((link) => {
+        return <FooterLink key={link.href} {...link} />;
+      })}
+    </Stack>
+  </Flex>
+);
 
 export default Footer;
