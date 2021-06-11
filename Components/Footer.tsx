@@ -1,11 +1,18 @@
 import { Flex, Text, Stack } from '@chakra-ui/react';
+import { IconType } from 'react-icons';
 import { DiGithubBadge } from 'react-icons/di';
 import { IoLogoLinkedin } from 'react-icons/io';
 import { MdEmail } from 'react-icons/md';
 
 import FooterLink from './FooterLink';
 
-const links = [
+type Link = {
+  icon: IconType;
+  label: string;
+  href: string;
+};
+
+const links: Link[] = [
   {
     icon: DiGithubBadge,
     label: 'github',
@@ -23,7 +30,11 @@ const links = [
   }
 ];
 
-const Footer = ({ h }) => (
+type FooterProps = {
+  h: string;
+};
+
+const Footer = ({ h }: FooterProps) => (
   <Flex
     as="footer"
     marginY={2}
