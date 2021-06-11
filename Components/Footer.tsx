@@ -43,7 +43,7 @@ const Footer = ({ h }: FooterProps) => (
     alignItems="center"
   >
     <Text fontSize="lg">Made by Nick Papadakis</Text>
-    <Stack ml={2} direction="row" spacing="12px">
+    <Stack ml={2} direction="row" spacing="12px" justify="center">
       {links.map((link) => {
         return <FooterLink key={link.href} {...link} />;
       })}
