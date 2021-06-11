@@ -1,8 +1,9 @@
 import { SimpleGrid } from '@chakra-ui/react';
 import Head from 'next/head';
-import AssetGridItem from '../components/AssetItem';
 
-import assets from './assets/assets';
+import Section from '../components/AssetItem';
+
+import assets from '../lib/assets';
 
 export default function Home() {
   return (
@@ -12,9 +13,11 @@ export default function Home() {
         <meta name="Home Page" content="CryptoDigest Home Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      {assets.map((asset) => (
-        <AssetGridItem key={asset.title} {...asset} />
-      ))}
+      {assets
+        .filter(({ link }) => link !== '/')
+        .map((asset) => (
+          <Section key={asset.title} {...asset} />
+        ))}
     </SimpleGrid>
   );
 }
