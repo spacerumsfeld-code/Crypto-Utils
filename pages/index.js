@@ -6,15 +6,12 @@ import { Box, Text } from '@chakra-ui/react';
 
 export default function Home() {
   return (
-    // eslint-disable-next-line no-undef
-    <Box h="100%" w="100%" color="brand.text">
+    <SimpleGrid>
       <Head>
         <title>To The Moon</title>
         <meta name="Home Page" content="CryptoDigest Home Page" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-
-      <Text>Hello World</Text>
-    </Box>
+    </SimpleGrid>
   );
 }
