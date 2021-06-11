@@ -1,10 +1,13 @@
 import { Flex, Heading, Box, Link, useColorModeValue } from '@chakra-ui/react';
 
 import ColorModeChanger from './ColorModeChanger';
-
 import NextLink from 'next/link';
 
-const Header = ({ h }) => {
+type HeaderProps = {
+  h: string;
+};
+
+const Header = ({ h }: HeaderProps) => {
   const bg = useColorModeValue('white', 'black');
   //router
 
