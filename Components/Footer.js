@@ -24,7 +24,13 @@ const links = [
 ];
 
 const Footer = ({ h }) => (
-  <Flex marginY={2} h={h} justifyContent="center" alignItems="center">
+  <Flex
+    as="footer"
+    marginY={2}
+    h={h}
+    justifyContent="center"
+    alignItems="center"
+  >
     <Text fontSize="lg">Made by Nick Papadakis</Text>
     <Stack ml={2} direction="row" spacing="12px">
       {links.map((link) => {
