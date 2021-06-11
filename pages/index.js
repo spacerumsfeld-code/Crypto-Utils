@@ -1,3 +1,5 @@
+import { SimpleGrid } from '@chakra-ui/react';
+
 /* eslint-disable no-undef */
 import Head from 'next/head';
 import { Box, Text } from '@chakra-ui/react';
