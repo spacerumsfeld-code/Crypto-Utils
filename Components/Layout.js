@@ -1,10 +1,10 @@
-import { Flex, Box } from '@chakra-ui/react';
+import { Flex, Box, useColorModeValue } from '@chakra-ui/react';
 
 import Header from './Header';
 import Footer from './Footer';
 
 const Layout = ({ children }) => {
-  // const bg = useColorModeValue('linkedin.100', 'gray.700');
+  const bg = useColorModeValue('linkedin.100', 'gray.700');
 
   return (
     <Flex direction="column" minH="100%">
@@ -15,7 +15,7 @@ const Layout = ({ children }) => {
         padding="1rem"
         margin="0 auto"
         width="100%"
-        bg="brand.bg"
+        bg={bg}
       >
         {children}
       </Box>

@@ -11,6 +11,7 @@ const ColorModeChanger = () => {
       size="lg"
       fontSize="lg"
       color="current"
+      variant="ghost"
       aria-label={`Switch to ${text} mode`}
       onClick={toggleColorMode}
       icon={<SwitchIcon />}
