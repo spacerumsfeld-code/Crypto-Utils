@@ -3,7 +3,7 @@ import NextLink from 'next/link';
 
 const Section = ({ title, href, image }) => (
   <Link as={NextLink} href={href}>
-    <Flex>
+    <Flex flexDirection="column" alignItems="center">
       <Box flex={1}>
         <Image objectFit="contain" src={image} alt={title} />
       </Box>
