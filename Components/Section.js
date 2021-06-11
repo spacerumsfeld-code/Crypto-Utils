@@ -1,15 +1,15 @@
 import { Box, Link, Heading, Image, Flex } from '@chakra-ui/react';
 import NextLink from 'next/link';
 
-const Section = ({ title, href, image }) => {
+const Section = ({ title, href, image }) => (
   <Link as={NextLink} href={href}>
     <Flex>
-      <Box>
-        <Image></Image>
+      <Box flex={1}>
+        <Image objectFit="contain" src={image} alt={title} />
       </Box>
-      <Heading></Heading>
+      <Heading text-align="center">{title}</Heading>
     </Flex>
-  </Link>;
-};
+  </Link>
+);
 
 export default Section;
