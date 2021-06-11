@@ -1,5 +1,5 @@
 import { IconButton, useColorMode, useColorModeValue } from '@chakra-ui/react';
-import { Sunicon, MoonIcon } from '@chakra-ui/icons';
+import { SunIcon, MoonIcon } from '@chakra-ui/icons';
 
 const ColorModeChanger = () => {
   const { toggleColorMode } = useColorMode();
@@ -7,8 +7,15 @@ const ColorModeChanger = () => {
   const SwitchIcon = useColorModeValue(MoonIcon, SunIcon);
 
   return (
-    <IconButton size="lg" fontSize="lg" />;
-  )
+    <IconButton
+      size="lg"
+      fontSize="lg"
+      color="current"
+      aria-label={`Switch to ${text} mode`}
+      onClick={toggleColorMode}
+      icon={<SwitchIcon />}
+    />
+  );
 };
 
 export default ColorModeChanger;
