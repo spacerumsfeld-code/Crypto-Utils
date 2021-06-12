@@ -7,13 +7,14 @@ import {
 
 type Tweet = {
   text: string;
+  sentiment: string;
 };
 
 type NegativeTweetsProps = {
-  negative: Tweet[];
+  negativeTweets: Tweet[];
 };
 
-const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
+const NegativeTweets = ({ negativeTweets }: NegativeTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
