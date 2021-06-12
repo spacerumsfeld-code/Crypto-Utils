@@ -64,6 +64,17 @@ const SentimentPage = () => (
   </Flex>
 );
 
+export async function getStaticPaths() {
+  return {
+    paths: [
+      { params: { asset: 'bitcoin' } },
+      { params: { asset: 'ethereum' } },
+      { params: { asset: 'dogecoin' } }
+    ],
+    fallback: false
+  };
+}
+
 export async function getStaticProps() {
   const tweets = await utils.getTweets('Bitcoin');
   const sentimentData = await utils.analyzeSentiment(tweets);
