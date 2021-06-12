@@ -9,7 +9,7 @@ import {
   useTabList
 } from '@chakra-ui/react';
 import axios from 'axios';
-import utils from '@/utils/utils';
+import utils from '@/lib/utils';
 
 type BitcoinPageProps = {
   data: [number, string][];
@@ -113,7 +113,13 @@ export async function getStaticProps() {
 export async function getStaticProps() {
   const tweets = await utils.getTweets('Bitcoin');
   const tweetsWithSentiment = await utils.analyzeSentiment();
-  const;
+  const finalTweets = await utils.processData();
+
+  return {
+    props: {
+      finalTweets
+    }
+  };
 }
 
 /*
@@ -124,22 +130,6 @@ export async function getStaticProps() {
       setNegative(negativeTweets);
     })
     .catch((err) => console.log(err));
-};
-*/
-
-/*
-exports.getTweets = async (req, res) => {
-  try {
-    let coin = req.query.coin;
-    const tweets = await helpers.getTweets(coin);
-    const analyzedTweets = await helpers.sentimentAnalysis(tweets);
-    const finalData = await helpers.formatData(analyzedTweets);
-    res.status(200).send(finalData);
-  }
-  catch (error) {
-    console.log(error);
-    res.status(500).send(error);
-  }
 };
 */
 
