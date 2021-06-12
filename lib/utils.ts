@@ -10,9 +10,13 @@ const getTweets = async (asset: string): Promise<Tweet[]> => {
     const options = {
       method: 'GET',
       url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
-      Authorization: `Bearer ${process.env.Twitter_Token}`,
-      Cookie:
-        'guest_id=v1%3A161576573540526140; personalization_id="v1_o2eZFqw0uy5xLkP42RkTJA=="'
+      headers: {
+        id: '1',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${process.env.TWITTER_TOKEN}`,
+        Cookie:
+          'guest_id=v1%3A161576573540526140; personalization_id="v1_o2eZFqw0uy5xLkP42RkTJA=="'
+      }
     };
     const response = await axios(options);
     const tweets = response.data.data;
@@ -31,10 +35,12 @@ const analyzeSentiment = async (tweets: Tweet[]) => {
       method: 'POST',
       url: `${process.env.MONKEY_API}`,
       headers: {
-        Authorization: `Token ${process.env.MONKEY_TOKEN}`
-        // 'Content-Type': 'application/json'
+        Authorization: `Token ${process.env.MONKEY_TOKEN}`,
+        'Content-Type': 'application/json'
       },
-      data: processedTweets
+      data: {
+        data: processedTweets
+      }
     };
     const response = await axios(options);
     const newTweets = response.data;
