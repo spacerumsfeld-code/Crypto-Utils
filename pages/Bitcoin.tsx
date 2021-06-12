@@ -1,5 +1,4 @@
 import {
-  SimpleGrid,
   Flex,
   Heading,
   VStack,
@@ -10,14 +9,6 @@ import {
 } from '@chakra-ui/react';
 
 const BitcoinPage = () => (
-  // <Container
-  //   h="100%"
-  //   w={['50%', '70%', '80%']}
-  //   border="1px solid white"
-  //   maxW="70%"
-  //   centerContent
-  //   //Overall wrapper for page. Intention: limit maxWidth and center everything
-  // >
   <Flex
     flexDirection="column"
     h="100%"
@@ -63,6 +54,7 @@ const BitcoinPage = () => (
       border="1px solid white"
       mt={3}
       textAlign="center"
+      maxW={['100%', '90%', '80%']}
       //Box for sentiment summary section: Heading and summarizing paragraph
     >
       <Heading>Sentiment Summary</Heading>
@@ -73,7 +65,6 @@ const BitcoinPage = () => (
       </Text>
     </Box>
   </Flex>
-  // </Container>
 
   //   <Flex>
   //   <Heading></Heading>
