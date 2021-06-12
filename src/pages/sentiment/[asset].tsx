@@ -26,10 +26,25 @@ const tweets = [
   { text: 'hahahahahahahaahah' }
 ];
 
-const SentimentPage = () => (
+type Tweet = {
+  text: string;
+  sentiment: string;
+};
+
+type SentimentPageProps = {
+  asset: string;
+  positiveTweets: Tweet[];
+  negativeTweets: Tweet[];
+};
+
+const SentimentPage = ({
+  asset,
+  positiveTweets,
+  negativeTweets
+}: SentimentPageProps) => (
   <Flex direction="column" justifyContent="flex-start" alignItems="center">
     <SHeader asset={'bitcoin'} />
-    <AssetIcon asset={'section-image'} />
+    <AssetIcon asset={asset} />
     <Stack w={['80%', '70%']}>
       <Summary />
       <Accordion allowMultiple allowToggle>
@@ -43,7 +58,7 @@ const SentimentPage = () => (
             </AccordionButton>
           </h2>
           <AccordionPanel>
-            <PositiveTweets positive={tweets} />
+            <PositiveTweets positive={positiveTweets} />
           </AccordionPanel>
         </AccordionItem>
         <AccordionItem>
@@ -56,7 +71,7 @@ const SentimentPage = () => (
             </AccordionButton>
           </h2>
           <AccordionPanel>
-            <NegativeTweets negative={tweets} />
+            <NegativeTweets negative={negativeTweets} />
           </AccordionPanel>
         </AccordionItem>
       </Accordion>
@@ -76,6 +91,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  const asset = params.asset;
   const tweets = await utils.getTweets(params.asset);
   const sentimentData = await utils.analyzeSentiment(tweets);
   const formattedTweets = utils.formatData(sentimentData);
@@ -88,7 +104,7 @@ export async function getStaticProps({ params }) {
 
   return {
     props: {
-      // asset,
+      asset,
       positiveTweets,
       negativeTweets
     }
