@@ -26,7 +26,7 @@ const NegativeTweets = ({ negativeTweets }: NegativeTweetsProps) => {
       spacing={2}
       align="stretch"
     >
-      {negative.map((tweet) => (
+      {negativeTweets.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}
     </VStack>
