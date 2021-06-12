@@ -1,7 +1,7 @@
 import axios from 'axios';
 
-const getTweets = (asset: string) => {};
+const getTweets = async (asset: string) => {};
 
-const analyzeSentiment = () => {};
+const analyzeSentiment = async () => {};
 
-const processData = () => {};
+const processData = async () => {};
