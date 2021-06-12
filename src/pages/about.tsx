@@ -9,6 +9,7 @@ import {
 } from '@chakra-ui/react';
 import SHeader from '@/sentimentComponents/SHeader';
 import AssetIcon from '@/sentimentComponents/AssetIcon';
+import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 
 const AboutPage = () => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
@@ -25,6 +26,7 @@ const AboutPage = () => {
             ____ of tweets being positive and ____ of tweets being negative
           </Text>
         </Box>
+        <PositiveTweets />
       </Stack>
     </Flex>
   );

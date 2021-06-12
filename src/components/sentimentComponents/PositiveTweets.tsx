@@ -17,7 +17,9 @@ const PositiveTweets = () => {
       spacing={4}
       align="stretch"
     >
-      <Heading fontSize="sm">Positive Tweets</Heading>
+      <Heading textAlign="center" fontSize="sm">
+        Positive Tweets
+      </Heading>
       <Text>Tweet 1 bro!</Text>
       <Text>Tweet 1 bro!</Text>
       <Text>Tweet 1 bro!</Text>
