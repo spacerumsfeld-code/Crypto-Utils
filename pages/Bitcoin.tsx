@@ -96,19 +96,19 @@ const BitcoinPage = ({ data }: BitcoinPageProps) => (
   </Flex>
 );
 
-export async function getStaticProps() {
-  // Call an external API endpoint to get posts.
-  const url = 'https://jsonplaceholder.typicode.com/users';
-  const res = await axios.get(url);
-  const data = res.data.map((user) => [user.id, user.name]);
-  console.log(data);
+// export async function getStaticProps() {
+//   // Call an external API endpoint to get posts.
+//   const url = 'https://jsonplaceholder.typicode.com/users';
+//   const res = await axios.get(url);
+//   const data = res.data.map((user) => [user.id, user.name]);
+//   console.log(data);
 
-  return {
-    props: {
-      data
-    }
-  };
-}
+//   return {
+//     props: {
+//       data
+//     }
+//   };
+// }
 
 export async function getStaticProps() {
   const tweets = await utils.getTweets('Bitcoin');
