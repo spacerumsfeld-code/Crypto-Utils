@@ -1,3 +1,7 @@
 import axios from 'axios';
 
-const getTweets = (asset) => {};
+const getTweets = (asset: string) => {};
+
+const analyzeSentiment = () => {};
+
+const processData = () => {};
