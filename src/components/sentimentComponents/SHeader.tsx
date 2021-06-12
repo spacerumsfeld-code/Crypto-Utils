@@ -11,7 +11,7 @@ const SHeader = ({ asset }: SHeaderProps) => (
     alignItems="center"
     border="1px solid white"
   >
-    <Heading fontSize="6vw">Sentiment</Heading>
+    <Heading fontSize="5vw">Sentiment</Heading>
     <Text fontSize={['0.9em', '1em']}>{`${asset} sentiment for the day`}</Text>
   </Flex>
 );

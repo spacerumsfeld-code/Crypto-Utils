@@ -8,11 +8,11 @@ const AssetIcon = ({ asset }: AssetIconProps) => (
   <Box
     border="1px solid white"
     position={['relative', 'relative', 'relative', 'relative', 'absolute']}
-    top={[null, '6rem']}
-    left={[null, '10rem', '15rem']}
+    top={[null, null, null, null, '4rem']}
+    left={[null, null, null, null, '26rem']}
   >
     <Image
-      maxBlockSize="150px"
+      maxBlockSize="110px"
       src={`/${asset}.png`}
       alt="Asset Icon"
       borderRadius="8px"
