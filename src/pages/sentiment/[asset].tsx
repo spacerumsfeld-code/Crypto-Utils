@@ -76,7 +76,7 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
-  const tweets = await utils.getTweets('Bitcoin');
+  const tweets = await utils.getTweets(params.asset);
   const sentimentData = await utils.analyzeSentiment(tweets);
   const formattedTweets = utils.formatData(sentimentData);
   const positiveTweets = formattedTweets.filter(
