@@ -42,4 +42,16 @@ const analyzeSentiment = async (tweets: Tweet[]) => {
   }
 };
 
-const processData = async () => {};
+type ProcessedTweet = {
+  text: string;
+  sentiment: string;
+};
+
+const formatData = (tweets): ProcessedTweet[] => {
+  const finalTweets = tweets.map((tweet) => ({
+    text: tweet.text,
+    sentiment: tweet.classifications[0].tag_name
+  }));
+
+  return finalTweets;
+};
