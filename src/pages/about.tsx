@@ -17,7 +17,7 @@ const AboutPage = () => {
       <SHeader asset={'bitcoin'} />
       <AssetIcon asset={'section-image'} />
       <Stack w={['80%', '70%']}>
-        <Box>
+        <Box textAlign="center">
           <Text fontSize={['md', 'lg']}>
             Sentiment Summary! This is a placeholder paragraph to indicate an
             example size of a sentiment summary paragraph. Currently, 100
@@ -25,19 +25,6 @@ const AboutPage = () => {
             ____ of tweets being positive and ____ of tweets being negative
           </Text>
         </Box>
-        <VStack
-          mt={4}
-          border="1px solid white"
-          divider={<StackDivider borderColor={bg} />}
-          spacing={4}
-          align="stretch"
-        >
-          <Text>Tweet 1 bro!</Text>
-          <Text>Tweet 1 bro!</Text>
-          <Text>Tweet 1 bro!</Text>
-          <Text>Tweet 1 bro!</Text>
-          <Text>Tweet 1 bro!</Text>
-        </VStack>
       </Stack>
     </Flex>
   );
