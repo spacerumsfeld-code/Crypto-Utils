@@ -1,4 +1,5 @@
 import {
+  SimpleGrid,
   Flex,
   Heading,
   VStack,
@@ -8,31 +9,38 @@ import {
   Text
 } from '@chakra-ui/react';
 
-/* <Grid
-  h="200px"
-  templateRows="repeat(2, 1fr)"
-  templateColumns="repeat(5, 1fr)"
-  gap={4}
->
-  <GridItem rowSpan={2} colSpan={1} bg="tomato" />
-  <GridItem colSpan={2} bg="papayawhip" />
-  <GridItem colSpan={2} bg="papayawhip" />
-  <GridItem colSpan={4} bg="tomato" />
-</Grid>; */
-
 const BitcoinPage = () => (
-  <Container h="100%" border="1px solid white" maxW="70%">
-    <Flex padding="1em" flexDirection="column" alignitems="center">
+  // // <Container
+  //   h="100%"
+  //   border="1px solid white"
+  //   maxW="70%"
+  //   centerContent
+  //   //Overall wrapper for page. Intention: limit maxWidth and center everything
+  // >
+  <SimpleGrid
+    h="100%"
+    gridAutoRows="1fr"
+    padding="1em"
+    minChildWidth="20rem"
+    //overall container for content in order to have flex direction=column (flow downward)
+  >
+    <Flex
+      flexDirection="row"
+      alignItems="center"
+      justifyContent="center"
+      //Wrapper for Top Panel: flex-direction row, asset image+heading flex and Description
+    >
       <Flex
         padding="1em"
         border="1px solid white"
         borderRadius="8px"
         flexDirection="column"
         alignItems="center"
+        //Flex for image + header so that they stack vertically
       >
         <Box>
           <Image
-            boxSize="250px"
+            maxBlockSize="250px"
             borderRadius="8px"
             objectFit="contain"
             src={'/section-image.png'}
@@ -41,7 +49,6 @@ const BitcoinPage = () => (
         </Box>
         <Heading>Bitcoin</Heading>
       </Flex>
-
       <Container border="1px solid white" centerContent>
         <Text fontSize="lg" border="1px solid white" padding="1em">
           Hello World. Welcome to the exciting world of Bitcoin. Introduced in
@@ -50,23 +57,21 @@ const BitcoinPage = () => (
         </Text>
       </Container>
     </Flex>
-  </Container>
-  //Overall Layout: grid?
-
-  //1 Flex containing image and header (coin image and coin name below)
-
-  // <Flex>
-  //   <Image></Image>
-  //   <Heading></Heading>
-  // </Flex>
-
-  //2 Descriptive block to right of (1), text in box?
-
-  // <Box>
-  //   <Text></Text>
-  // </Box>
-
-  //3 Positive Tweets section. Flex with heading ('positive') and stack of tweets below
+    <Box
+      border="1px solid white"
+      mt={3}
+      textAlign="center"
+      //Box for sentiment summary section: Heading and summarizing paragraph
+    >
+      <Heading>Sentiment Summary</Heading>
+      <Text fontSize="xl">
+        This paragraph will contain a brief sentiment of the sentiment data that
+        came in from props. The plan is to have this be a template literal that
+        drops in values based on the data!
+      </Text>
+    </Box>
+  </SimpleGrid>
+  // </Container>
 
   //   <Flex>
   //   <Heading></Heading>
