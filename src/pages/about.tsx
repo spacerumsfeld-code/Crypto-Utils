@@ -9,8 +9,10 @@ import {
   AccordionButton,
   AccordionPanel
 } from '@chakra-ui/react';
+
 import SHeader from '@/sentimentComponents/SHeader';
 import AssetIcon from '@/sentimentComponents/AssetIcon';
+import Summary from '@/sentimentComponents/Summary';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
@@ -28,15 +30,8 @@ const AboutPage = () => (
     <SHeader asset={'bitcoin'} />
     <AssetIcon asset={'section-image'} />
     <Stack w={['80%', '70%']}>
-      <Box textAlign="center">
-        <Text fontSize={['md', 'lg']}>
-          Sentiment Summary! This is a placeholder paragraph to indicate an
-          example size of a sentiment summary paragraph. Currently, 100 percent
-          of tweets are positive. The overall sentiment is ______ with ____ of
-          tweets being positive and ____ of tweets being negative
-        </Text>
-      </Box>
-      <Accordion allowMultiple defaultIndex={[0]} allowToggle>
+      <Summary />
+      <Accordion allowMultiple allowToggle>
         <AccordionItem>
           <h2>
             <AccordionButton>
