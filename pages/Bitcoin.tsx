@@ -5,9 +5,11 @@ import {
   Image,
   Box,
   Container,
-  Text
+  Text,
+  useTabList
 } from '@chakra-ui/react';
 import axios from 'axios';
+import utils from '@/utils/utils';
 
 type BitcoinPageProps = {
   data: [number, string][];
@@ -107,17 +109,14 @@ export async function getStaticProps() {
     }
   };
 }
-/*
-client-side request in old application
-filters tweets by positive and negative
-assigns to 'positive' and 'negative' in state
-  I will need to do this processing on tweets in the background and pass them to this
-  component already as 'positive' and 'negative'
 
-const getTweets = (coin) => {
-  setAbout(false);
-  axios.get(`http://localhost:3005/tweets?coin=${coin}`)
-    .then((response) => {
+export async function getStaticProps() {
+  const tweets = await utils.getTweets('Bitcoin');
+  const tweetsWithSentiment = await utils.analyzeSentiment();
+  const;
+}
+
+/*
       const positiveTweets = response.data.filter(({ sentiment }) => sentiment === 'Positive');
       setPositive(positiveTweets);
 
@@ -128,12 +127,7 @@ const getTweets = (coin) => {
 };
 */
 
-/*server-side controller code: get coin type from query (I can ignore that step here),
-call a helper to get tweets (I can make that a util I import),
-proceed to engage in sentiment analysis on them (another util for me it looks like),
-then finally call one more util to process the sentiment into a digestable form
-It looks like the below code can be my getStaticProps body, using a 'getTweets' util, a getSentiment util, and a 'processData' util; the processData' util will need to do the filtering done above
-
+/*
 exports.getTweets = async (req, res) => {
   try {
     let coin = req.query.coin;
