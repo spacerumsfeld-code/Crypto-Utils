@@ -1,7 +1,5 @@
 //to-do: import images
 
-//Here are the grid items that will appear on the home page and in the navbar: Home, About, and the collection of assets.
-
 type Asset = {
   title: string;
   href: string;
