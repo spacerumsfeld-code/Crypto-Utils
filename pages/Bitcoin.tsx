@@ -9,9 +9,11 @@ import {
 } from '@chakra-ui/react';
 import axios from 'axios';
 
-type BitcoinPageProps = {};
+type BitcoinPageProps = {
+  data: [number, string][];
+};
 
-const BitcoinPage = ({ props }: BitcoinPageProps) => (
+const BitcoinPage = ({ data }: BitcoinPageProps) => (
   <Flex
     flexDirection="column"
     h="100%"
@@ -78,11 +80,9 @@ const BitcoinPage = ({ props }: BitcoinPageProps) => (
     >
       <VStack pr={[null, '5rem', '5rem']}>
         <Heading fontSize="sm">Positive Tweets</Heading>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
+        {data.map((el) => (
+          <Text key={el[0]}>{el[0]}</Text>
+        ))}
       </VStack>
       <VStack pl={[null, '5rem', '5rem']}>
         <Heading fontSize="sm">Negative Tweets</Heading>
@@ -98,14 +98,15 @@ const BitcoinPage = ({ props }: BitcoinPageProps) => (
 
 export async function getStaticProps() {
   // Call an external API endpoint to get posts.
-  const res = await fetch('https://.../posts');
-  const posts = await res.json();
+  const url = 'https://jsonplaceholder.typicode.com/users';
+  const res = await axios.get(url);
+  const data = res.data.map((user) => {
+    [user.id, user.name];
+  });
 
-  // By returning { props: { posts } }, the Blog component
-  // will receive `posts` as a prop at build time
   return {
     props: {
-      posts
+      data
     }
   };
 }
