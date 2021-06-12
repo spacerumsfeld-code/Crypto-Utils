@@ -22,6 +22,8 @@ const getTweets = async (asset: string): Promise<Tweet[]> => {
   }
 };
 
+//add Type for response from monkeyLearn API (I dont remember and feel like proceeding with coding)
+
 const analyzeSentiment = async (tweets: Tweet[]) => {
   const processedTweets = tweets.map(({ text }) => text);
   try {
@@ -42,16 +44,18 @@ const analyzeSentiment = async (tweets: Tweet[]) => {
   }
 };
 
-type ProcessedTweet = {
+type FormattedTweet = {
   text: string;
   sentiment: string;
 };
 
-const formatData = (tweets): ProcessedTweet[] => {
+const formatData = (tweets): FormattedTweet[] => {
   const finalTweets = tweets.map((tweet) => ({
     text: tweet.text,
     sentiment: tweet.classifications[0].tag_name
   }));
-
   return finalTweets;
 };
+
+const utils = { getTweets, analyzeSentiment, formatData };
+export default utils;

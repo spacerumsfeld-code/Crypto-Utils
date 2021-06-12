@@ -5,10 +5,8 @@ import {
   Image,
   Box,
   Container,
-  Text,
-  useTabList
+  Text
 } from '@chakra-ui/react';
-import axios from 'axios';
 import utils from '@/lib/utils';
 
 type BitcoinPageProps = {
@@ -112,25 +110,21 @@ const BitcoinPage = ({ data }: BitcoinPageProps) => (
 
 export async function getStaticProps() {
   const tweets = await utils.getTweets('Bitcoin');
-  const tweetsWithSentiment = await utils.analyzeSentiment();
-  const finalTweets = await utils.processData();
+  const sentimentData = await utils.analyzeSentiment(tweets);
+  const finalTweets = await utils.formatData(sentimentData);
+  const positiveTweets = finalTweets.filter(
+    ({ sentiment }) => sentiment === 'Positive'
+  );
+  const negativeTweets = finalTweets.filter(
+    ({ sentiment }) => sentiment === 'Negative'
+  );
 
   return {
     props: {
-      finalTweets
+      positiveTweets,
+      negativeTweets
     }
   };
 }
-
-/*
-      const positiveTweets = response.data.filter(({ sentiment }) => sentiment === 'Positive');
-      setPositive(positiveTweets);
-
-      const negativeTweets = response.data.filter(({ sentiment }) => sentiment === 'Negative');
-      setNegative(negativeTweets);
-    })
-    .catch((err) => console.log(err));
-};
-*/
 
 export default BitcoinPage;
