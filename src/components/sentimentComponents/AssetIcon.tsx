@@ -9,7 +9,7 @@ const AssetIcon = ({ asset }: AssetIconProps) => (
   <Box
     position={['relative', 'relative', 'relative', 'relative', 'absolute']}
     top={[null, null, null, null, '5rem']}
-    left={[null, null, null, null, '26rem']}
+    left={[null, null, null, null, '27rem']}
   >
     <Image
       maxBlockSize="110px"
