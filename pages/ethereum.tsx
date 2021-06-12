@@ -54,7 +54,7 @@ const EthereumPage = ({
             alt="asset"
           />
         </Box>
-        <Heading>Bitcoin</Heading>
+        <Heading>Ethereum</Heading>
       </Flex>
       <Container border="1px solid white" centerContent>
         <Text fontSize="lg" border="1px solid white" padding="1em">
