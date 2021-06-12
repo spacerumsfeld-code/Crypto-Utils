@@ -1,6 +1,10 @@
 import { Box, Image } from '@chakra-ui/react';
 
-const AssetIcon = () => (
+type AssetIconProps = {
+  asset: string;
+};
+
+const AssetIcon = ({ asset }: AssetIconProps) => (
   <Box
     border="1px solid white"
     position={['relative', 'relative', 'relative', 'relative', 'absolute']}
@@ -9,8 +13,8 @@ const AssetIcon = () => (
   >
     <Image
       maxBlockSize="150px"
-      src="/section-image.png"
-      alt="section image"
+      src={`/${asset}.png`}
+      alt="Asset Icon"
       borderRadius="8px"
     />
   </Box>
