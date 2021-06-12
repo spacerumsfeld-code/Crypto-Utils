@@ -10,3 +10,5 @@ const Summary = () => (
     </Text>
   </Box>
 );
+
+export default Summary;
