@@ -1,25 +1,9 @@
-import { Flex, Heading, Image, Box, Text, Stack } from '@chakra-ui/react';
+import { Flex, Image, Box, Text, Stack } from '@chakra-ui/react';
+import SHeader from '@/sentimentComponents/SHeader';
 
 const AboutPage = () => (
-  <Flex
-    pt="2em"
-    h="100%"
-    direction="column"
-    alignItems="center"
-    justifyContent="flex-start"
-    border="1px solid white"
-  >
-    <Flex
-      flexDirection="column"
-      justifyContent="center"
-      alignItems="center"
-      border="1px solid white"
-    >
-      <Heading fontSize="6vw">Github Emojis</Heading>
-      <Text fontSize={['0.9em', '1em']}>
-        Your favorite digital cryptocurrency sentiment app!
-      </Text>
-    </Flex>
+  <Flex direction="column" justifyContent="flex-start" alignItems="center">
+    <SHeader asset={'bitcoin'} />
     <Box
       border="1px solid white"
       position={['relative', 'relative', 'relative', 'relative', 'absolute']}
