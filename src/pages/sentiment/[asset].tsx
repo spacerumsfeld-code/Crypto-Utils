@@ -15,7 +15,7 @@ import Summary from '@/sentimentComponents/Summary';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
-const AboutPage = () => (
+const SentimentPage = () => (
   <Flex direction="column" justifyContent="flex-start" alignItems="center">
     <SHeader asset={'bitcoin'} />
     <AssetIcon asset={'section-image'} />
@@ -72,4 +72,4 @@ export async function getStaticProps() {
   };
 }
 
-export default AboutPage;
+export default SentimentPage;
