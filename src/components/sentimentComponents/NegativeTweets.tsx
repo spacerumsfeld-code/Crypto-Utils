@@ -11,10 +11,10 @@ type Tweet = {
 };
 
 type NegativeTweetsProps = {
-  negativeTweets: Tweet[];
+  negative: Tweet[];
 };
 
-const NegativeTweets = ({ negativeTweets }: NegativeTweetsProps) => {
+const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
@@ -26,7 +26,7 @@ const NegativeTweets = ({ negativeTweets }: NegativeTweetsProps) => {
       spacing={2}
       align="stretch"
     >
-      {negativeTweets.map((tweet) => (
+      {negative.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}
     </VStack>

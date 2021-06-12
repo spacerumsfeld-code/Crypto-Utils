@@ -7,12 +7,13 @@ import {
 
 type Tweet = {
   text: string;
+  sentiment: string;
 };
 
 type PositiveTweetsProps = {
-  positiveTweets: Tweet[];
+  positive: Tweet[];
 };
-const PositiveTweets = ({ positiveTweets }: PositiveTweetsProps) => {
+const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
@@ -24,7 +25,7 @@ const PositiveTweets = ({ positiveTweets }: PositiveTweetsProps) => {
       spacing={2}
       align="stretch"
     >
-      {positiveTweets.map((tweet) => (
+      {positive.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}
     </VStack>
