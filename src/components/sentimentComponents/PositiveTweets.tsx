@@ -2,7 +2,6 @@ import {
   VStack,
   StackDivider,
   Text,
-  Heading,
   useColorModeValue
 } from '@chakra-ui/react';
 
@@ -26,9 +25,6 @@ const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
       spacing={2}
       align="stretch"
     >
-      <Heading textAlign="center" fontSize="sm">
-        Positive Tweets
-      </Heading>
       {positive.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}

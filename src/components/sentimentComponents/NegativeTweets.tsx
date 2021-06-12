@@ -2,7 +2,6 @@ import {
   VStack,
   StackDivider,
   Text,
-  Heading,
   useColorModeValue
 } from '@chakra-ui/react';
 
