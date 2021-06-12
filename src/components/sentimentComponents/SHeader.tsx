@@ -4,6 +4,8 @@ type SHeaderProps = {
   asset: string;
 };
 
+//note: mess with fontSize for header perhaps
+
 const SHeader = ({ asset }: SHeaderProps) => (
   <Flex
     flexDirection="column"

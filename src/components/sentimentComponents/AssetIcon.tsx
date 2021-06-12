@@ -4,11 +4,11 @@ type AssetIconProps = {
   asset: string;
 };
 
+//note: mess with maxBlockSize of image perhaps
 const AssetIcon = ({ asset }: AssetIconProps) => (
   <Box
-    border="1px solid white"
     position={['relative', 'relative', 'relative', 'relative', 'absolute']}
-    top={[null, null, null, null, '4rem']}
+    top={[null, null, null, null, '5rem']}
     left={[null, null, null, null, '26rem']}
   >
     <Image

@@ -21,15 +21,11 @@ const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
     <VStack
       borderRadius="8px"
       shadow="xl"
-      mY={100}
       border="1px solid white"
       divider={<StackDivider borderColor={bg} />}
       spacing={2}
       align="stretch"
     >
-      <Heading textAlign="center" fontSize="sm">
-        NegativeTweets
-      </Heading>
       {negative.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}

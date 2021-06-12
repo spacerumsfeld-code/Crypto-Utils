@@ -1,4 +1,14 @@
-import { Flex, Box, Text, Stack } from '@chakra-ui/react';
+import {
+  Flex,
+  Box,
+  Text,
+  Stack,
+  Accordion,
+  AccordionItem,
+  AccordionIcon,
+  AccordionButton,
+  AccordionPanel
+} from '@chakra-ui/react';
 import SHeader from '@/sentimentComponents/SHeader';
 import AssetIcon from '@/sentimentComponents/AssetIcon';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
@@ -26,8 +36,34 @@ const AboutPage = () => (
           tweets being positive and ____ of tweets being negative
         </Text>
       </Box>
-      <PositiveTweets positive={tweets} />
-      <NegativeTweets negative={tweets} />
+      <Accordion allowMultiple defaultIndex={[0]} allowToggle>
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex={1} textAlign="center">
+                Positive Tweets
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel>
+            <PositiveTweets positive={tweets} />
+          </AccordionPanel>
+        </AccordionItem>
+        <AccordionItem>
+          <h2>
+            <AccordionButton>
+              <Box flex={1} textAlign="center">
+                Negative Tweets
+              </Box>
+              <AccordionIcon />
+            </AccordionButton>
+          </h2>
+          <AccordionPanel>
+            <NegativeTweets negative={tweets} />
+          </AccordionPanel>
+        </AccordionItem>
+      </Accordion>
     </Stack>
   </Flex>
 );
