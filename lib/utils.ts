@@ -1,6 +1,11 @@
 import axios from 'axios';
 
-const getTweets = async (asset: string) => {
+type Tweet = {
+  id: string;
+  text: string;
+};
+
+const getTweets = async (asset: string): Promise<Tweet[]> => {
   try {
     const options = {
       method: 'GET',
@@ -17,6 +22,24 @@ const getTweets = async (asset: string) => {
   }
 };
 
-const analyzeSentiment = async () => {};
+const analyzeSentiment = async (tweets: Tweet[]) => {
+  const processedTweets = tweets.map(({ text }) => text);
+  try {
+    const options = {
+      method: 'POST',
+      url: `${process.env.MONKEY_API}`,
+      headers: {
+        Authorization: `Token ${process.env.MONKEY_TOKEN}`
+        // 'Content-Type': 'application/json'
+      },
+      data: processedTweets
+    };
+    const response = await axios(options);
+    const newTweets = response.data;
+    return newTweets;
+  } catch (err) {
+    console.log(err);
+  }
+};
 
 const processData = async () => {};
