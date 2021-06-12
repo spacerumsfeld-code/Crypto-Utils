@@ -4,19 +4,7 @@ import SHeader from '@/sentimentComponents/SHeader';
 const AboutPage = () => (
   <Flex direction="column" justifyContent="flex-start" alignItems="center">
     <SHeader asset={'bitcoin'} />
-    <Box
-      border="1px solid white"
-      position={['relative', 'relative', 'relative', 'relative', 'absolute']}
-      top={[null, '6rem']}
-      left={[null, '10rem', '15rem']}
-    >
-      <Image
-        maxBlockSize="150px"
-        src="/section-image.png"
-        alt="section image"
-        borderRadius="8px"
-      />
-    </Box>
+
     <Stack w={['80%', '70%']} border="1px solid white">
       <Box>
         <Text fontSize={['md', 'lg']}>
