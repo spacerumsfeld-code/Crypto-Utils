@@ -57,21 +57,40 @@ const BitcoinPage = () => (
       maxW={['100%', '90%', '80%']}
       //Box for sentiment summary section: Heading and summarizing paragraph
     >
-      <Heading>Sentiment Summary</Heading>
+      <Heading fontSize="md">Sentiment Summary</Heading>
       <Text fontSize="xl">
         This paragraph will contain a brief sentiment of the sentiment data that
         came in from props. The plan is to have this be a template literal that
         drops in values based on the data!
       </Text>
     </Box>
+
+    <Flex
+      padding="1em"
+      flexDirection={['column', 'row', 'row']}
+      alignItems="center"
+      justifyItems="center"
+      //Flex Container for both positive and negative tweet stacks, will
+      //switch flex direction to column for mobile
+    >
+      <VStack pr={[null, '5rem', '5rem']}>
+        <Heading fontSize="sm">Positive Tweets</Heading>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+      </VStack>
+      <VStack pl={[null, '5rem', '5rem']}>
+        <Heading fontSize="sm">Negative Tweets</Heading>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+        <Text>Tweet 1</Text>
+      </VStack>
+    </Flex>
   </Flex>
-
-  //   <Flex>
-  //   <Heading></Heading>
-  //   <Stack></Stack>
-  // </Flex>
-
-  //4. Negative Tweets section. Same as (3)
 );
 
 export default BitcoinPage;
