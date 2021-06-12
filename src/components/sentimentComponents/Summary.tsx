@@ -1,7 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 
 const Summary = () => (
-  <Box textAlign="center">
+  <Box mb={4} textAlign="center">
     <Text fontSize={['md', 'lg']}>
       Sentiment Summary! This is a placeholder paragraph to indicate an example
       size of a sentiment summary paragraph. Currently, 100 percent of tweets

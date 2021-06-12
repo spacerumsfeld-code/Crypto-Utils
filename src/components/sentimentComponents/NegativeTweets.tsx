@@ -20,7 +20,7 @@ const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
     <VStack
       borderRadius="8px"
       shadow="xl"
-      border="1px solid white"
+      // border="1px solid white"
       divider={<StackDivider borderColor={bg} />}
       spacing={2}
       align="stretch"

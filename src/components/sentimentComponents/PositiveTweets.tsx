@@ -19,7 +19,6 @@ const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
     <VStack
       borderRadius="8px"
       shadow="xl"
-      mt={4}
       border="1px solid white"
       divider={<StackDivider borderColor={bg} />}
       spacing={2}

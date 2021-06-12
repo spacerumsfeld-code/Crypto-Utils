@@ -1,7 +1,6 @@
 import {
   Flex,
   Box,
-  Text,
   Stack,
   Accordion,
   AccordionItem,
