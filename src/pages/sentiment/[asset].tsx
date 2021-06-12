@@ -15,6 +15,15 @@ import Summary from '@/sentimentComponents/Summary';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
+const tweets = [
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' }
+];
+
 const SentimentPage = () => (
   <Flex direction="column" justifyContent="flex-start" alignItems="center">
     <SHeader asset={'bitcoin'} />

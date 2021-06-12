@@ -15,6 +15,8 @@ import Summary from '@/sentimentComponents/Summary';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
+import utils from '@/lib/utils';
+
 const tweets = [
   { text: 'hahahahahahahaahah' },
   { text: 'hahahahahahahaahah' },
