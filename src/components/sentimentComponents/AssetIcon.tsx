@@ -7,9 +7,10 @@ type AssetIconProps = {
 //note: mess with maxBlockSize of image perhaps
 const AssetIcon = ({ asset }: AssetIconProps) => (
   <Box
-  // position={['relative', 'relative', 'relative', 'relative', 'absolute']}
-  // top={[null, null, null, null, '5rem']}
-  // left={[null, null, null, null, '27rem']}
+    py="1em"
+    // position={['relative', 'relative', 'relative', 'relative', 'absolute']}
+    // top={[null, null, null, null, '5rem']}
+    // left={[null, null, null, null, '27rem']}
   >
     <Image
       maxBlockSize="110px"
