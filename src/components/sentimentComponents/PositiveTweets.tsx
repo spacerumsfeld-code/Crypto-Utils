@@ -6,7 +6,14 @@ import {
   useColorModeValue
 } from '@chakra-ui/react';
 
-const PositiveTweets = () => {
+type Tweet = {
+  text: string;
+};
+
+type PositiveTweetsProps = {
+  positive: Tweet[];
+};
+const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
@@ -20,10 +27,9 @@ const PositiveTweets = () => {
       <Heading textAlign="center" fontSize="sm">
         Positive Tweets
       </Heading>
-      <Text>Tweet 1 bro!</Text>
-      <Text>Tweet 1 bro!</Text>
-      <Text>Tweet 1 bro!</Text>
-      <Text>Tweet 1 bro!</Text>
+      {positive.map((tweet) => (
+        <Text key={tweet.text}>{tweet.text}</Text>
+      ))}
     </VStack>
   );
 };

@@ -11,6 +11,15 @@ import SHeader from '@/sentimentComponents/SHeader';
 import AssetIcon from '@/sentimentComponents/AssetIcon';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 
+const positive = [
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' },
+  { text: 'hahahahahahahaahah' }
+];
+
 const AboutPage = () => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
   return (
@@ -26,7 +35,7 @@ const AboutPage = () => {
             ____ of tweets being positive and ____ of tweets being negative
           </Text>
         </Box>
-        <PositiveTweets />
+        <PositiveTweets positive={positive} />
       </Stack>
     </Flex>
   );
