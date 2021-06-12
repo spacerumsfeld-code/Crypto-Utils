@@ -9,11 +9,17 @@ import {
 } from '@chakra-ui/react';
 import utils from '@/lib/utils';
 
-type BitcoinPageProps = {
-  data: [number, string][];
+type FormattedTweet = {
+  text: string;
+  sentiment: string;
 };
 
-const BitcoinPage = ({ data }: BitcoinPageProps) => (
+type BitcoinPageProps = {
+  positiveTweets: FormattedTweet[];
+  negativeTweets: FormattedTweet[];
+};
+
+const BitcoinPage = ({ positiveTweets, negativeTweets }: BitcoinPageProps) => (
   <Flex
     flexDirection="column"
     h="100%"
@@ -80,14 +86,14 @@ const BitcoinPage = ({ data }: BitcoinPageProps) => (
     >
       <VStack pr={[null, '5rem', '5rem']}>
         <Heading fontSize="sm">Positive Tweets</Heading>
-        {data.map((el) => (
-          <Text key={el[0]}>{el[0]}</Text>
+        {positiveTweets.map((tweet) => (
+          <Text key={tweet.text}>{tweet.text}</Text>
         ))}
       </VStack>
       <VStack pl={[null, '5rem', '5rem']}>
         <Heading fontSize="sm">Negative Tweets</Heading>
-        {data.map((el) => (
-          <Text key={el[1]}>{el[1]}</Text>
+        {negativeTweets.map((tweet) => (
+          <Text key={tweet.text}>{tweet.text}</Text>
         ))}
       </VStack>
     </Flex>
@@ -111,11 +117,11 @@ const BitcoinPage = ({ data }: BitcoinPageProps) => (
 export async function getStaticProps() {
   const tweets = await utils.getTweets('Bitcoin');
   const sentimentData = await utils.analyzeSentiment(tweets);
-  const finalTweets = await utils.formatData(sentimentData);
-  const positiveTweets = finalTweets.filter(
+  const formattedTweets = utils.formatData(sentimentData);
+  const positiveTweets = formattedTweets.filter(
     ({ sentiment }) => sentiment === 'Positive'
   );
-  const negativeTweets = finalTweets.filter(
+  const negativeTweets = formattedTweets.filter(
     ({ sentiment }) => sentiment === 'Negative'
   );
 
