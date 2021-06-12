@@ -10,10 +10,11 @@ type Tweet = {
   text: string;
 };
 
-type PositiveTweetsProps = {
-  positive: Tweet[];
+type NegativeTweetsProps = {
+  negative: Tweet[];
 };
-const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
+
+const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
@@ -27,11 +28,11 @@ const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
       <Heading textAlign="center" fontSize="sm">
         Positive Tweets
       </Heading>
-      {positive.map((tweet) => (
+      {negative.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}
     </VStack>
   );
 };
 
-export default PositiveTweets;
+export default NegativeTweets;
