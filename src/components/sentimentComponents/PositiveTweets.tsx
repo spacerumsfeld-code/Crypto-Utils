@@ -10,21 +10,21 @@ type Tweet = {
 };
 
 type PositiveTweetsProps = {
-  positive: Tweet[];
+  positiveTweets: Tweet[];
 };
-const PositiveTweets = ({ positive }: PositiveTweetsProps) => {
+const PositiveTweets = ({ positiveTweets }: PositiveTweetsProps) => {
   const bg = useColorModeValue('gray.700', 'whiteAlpha.900');
 
   return (
     <VStack
       borderRadius="8px"
       shadow="xl"
-      border="1px solid white"
+      // border="1px solid white"
       divider={<StackDivider borderColor={bg} />}
       spacing={2}
       align="stretch"
     >
-      {positive.map((tweet) => (
+      {positiveTweets.map((tweet) => (
         <Text key={tweet.text}>{tweet.text}</Text>
       ))}
     </VStack>

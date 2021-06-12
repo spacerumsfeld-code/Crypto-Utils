@@ -43,7 +43,7 @@ const SentimentPage = ({
   negativeTweets
 }: SentimentPageProps) => (
   <Flex direction="column" justifyContent="flex-start" alignItems="center">
-    <SHeader asset={'bitcoin'} />
+    <SHeader asset={asset} />
     <AssetIcon asset={asset} />
     <Stack w={['80%', '70%']}>
       <Summary />
@@ -91,8 +91,9 @@ export async function getStaticPaths() {
 }
 
 export async function getStaticProps({ params }) {
+  console.log(params);
   const asset = params.asset;
-  const tweets = await utils.getTweets(params.asset);
+  const tweets = await utils.getTweets(asset);
   const sentimentData = await utils.analyzeSentiment(tweets);
   const formattedTweets = utils.formatData(sentimentData);
   const positiveTweets = formattedTweets.filter(
