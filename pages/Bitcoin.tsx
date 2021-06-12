@@ -86,11 +86,9 @@ const BitcoinPage = ({ data }: BitcoinPageProps) => (
       </VStack>
       <VStack pl={[null, '5rem', '5rem']}>
         <Heading fontSize="sm">Negative Tweets</Heading>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
-        <Text>Tweet 1</Text>
+        {data.map((el) => (
+          <Text key={el[1]}>{el[1]}</Text>
+        ))}
       </VStack>
     </Flex>
   </Flex>
@@ -100,9 +98,8 @@ export async function getStaticProps() {
   // Call an external API endpoint to get posts.
   const url = 'https://jsonplaceholder.typicode.com/users';
   const res = await axios.get(url);
-  const data = res.data.map((user) => {
-    [user.id, user.name];
-  });
+  const data = res.data.map((user) => [user.id, user.name]);
+  console.log(data);
 
   return {
     props: {
