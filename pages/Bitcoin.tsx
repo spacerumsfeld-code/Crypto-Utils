@@ -10,22 +10,24 @@ import {
 } from '@chakra-ui/react';
 
 const BitcoinPage = () => (
-  // // <Container
+  // <Container
   //   h="100%"
+  //   w={['50%', '70%', '80%']}
   //   border="1px solid white"
   //   maxW="70%"
   //   centerContent
   //   //Overall wrapper for page. Intention: limit maxWidth and center everything
   // >
-  <SimpleGrid
+  <Flex
+    flexDirection="column"
     h="100%"
-    gridAutoRows="1fr"
+    alignItems="center"
+    justifyItems="center"
     padding="1em"
-    minChildWidth="20rem"
     //overall container for content in order to have flex direction=column (flow downward)
   >
     <Flex
-      flexDirection="row"
+      flexDirection={['column', 'row', 'row']}
       alignItems="center"
       justifyContent="center"
       //Wrapper for Top Panel: flex-direction row, asset image+heading flex and Description
@@ -40,9 +42,9 @@ const BitcoinPage = () => (
       >
         <Box>
           <Image
-            maxBlockSize="250px"
+            maxBlockSize={['200px', '300px', '400px']}
             borderRadius="8px"
-            objectFit="contain"
+            // objectFit="contain"
             src={'/section-image.png'}
             alt="asset"
           />
@@ -70,7 +72,7 @@ const BitcoinPage = () => (
         drops in values based on the data!
       </Text>
     </Box>
-  </SimpleGrid>
+  </Flex>
   // </Container>
 
   //   <Flex>
