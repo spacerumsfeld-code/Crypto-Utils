@@ -122,4 +122,4 @@ export async function getStaticProps() {
   };
 }
 
-export default BitcoinPage;
+export default EthereumPage;
