@@ -5,7 +5,7 @@ type Tweet = {
   text: string;
 };
 
-const getTweets = async (asset: string): Promise<Tweet[]> => {
+const getTweets = async (asset: string): Promise<Tweet[] | undefined> => {
   try {
     const options = {
       method: 'GET',
