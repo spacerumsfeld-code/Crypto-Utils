@@ -24,6 +24,11 @@ const Header = ({ h }: HeaderProps) => {
           <ColorModeChanger />
         </Box>
       </Flex>
+      {router.route !== '/' && (
+        <Button>
+          <HamburgerIcon></HamburgerIcon>
+        </Button>
+      )}
     </Flex>
   );
 };
