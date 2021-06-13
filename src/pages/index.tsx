@@ -2,6 +2,7 @@ import { SimpleGrid } from '@chakra-ui/react';
 import Head from 'next/head';
 
 import Section from '@/components/Section';
+
 import assets from '@/lib/assets';
 
 export default function Home() {

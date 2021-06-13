@@ -4,9 +4,9 @@ import SectionItem from '@/components/Section';
 
 import assets from '@/lib/assets';
 
-interface NavProps {
+type NavProps = {
   onClose: () => void;
-}
+};
 
 const Nav = ({ onClose }: NavProps) => {
   return (
