@@ -1,13 +1,15 @@
-import axios from 'axios';
+import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
 type Tweet = {
   id: string;
   text: string;
 };
 
+/* I cast the options object as AxiosRequestConfig because if I did not, the "method" property was being flagged. This is because in the typing, method must have the method wrapped in double quotes. Quite a silly obstruction to run into.*/
+
 const getTweets = async (asset: string): Promise<Tweet[] | undefined> => {
   try {
-    const options = {
+    const options: AxiosRequestConfig = {
       method: 'GET',
       url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
       headers: {
@@ -18,20 +20,33 @@ const getTweets = async (asset: string): Promise<Tweet[] | undefined> => {
           'guest_id=v1%3A161576573540526140; personalization_id="v1_o2eZFqw0uy5xLkP42RkTJA=="'
       }
     };
-    const response = await axios(options);
-    const tweets = response.data.data;
+    const response: AxiosResponse = await axios(options);
+    const tweets: Tweet[] = response.data.data;
     return tweets;
   } catch (err) {
     console.log(err);
   }
 };
 
-//add Type for response from monkeyLearn API (I dont remember and feel like proceeding with coding)
+type ClassificationData = {
+  tag_name: string;
+  tag_id: number;
+  confidence: number;
+};
 
-const analyzeSentiment = async (tweets: Tweet[]) => {
+type SentimentDataPoint = {
+  text: string;
+  external_id: boolean;
+  error: boolean;
+  classifications: ClassificationData[];
+};
+
+const analyzeSentiment = async (
+  tweets: Tweet[]
+): Promise<SentimentDataPoint[] | undefined> => {
   const processedTweets = tweets.map(({ text }) => text);
   try {
-    const options = {
+    const options: AxiosRequestConfig = {
       method: 'POST',
       url: `${process.env.MONKEY_API}`,
       headers: {
@@ -42,7 +57,7 @@ const analyzeSentiment = async (tweets: Tweet[]) => {
         data: processedTweets
       }
     };
-    const response = await axios(options);
+    const response: AxiosResponse = await axios(options);
     const newTweets = response.data;
     return newTweets;
   } catch (err) {
@@ -55,10 +70,10 @@ type FormattedTweet = {
   sentiment: string;
 };
 
-const formatData = (tweets): FormattedTweet[] => {
-  const finalTweets = tweets.map((tweet) => ({
-    text: tweet.text,
-    sentiment: tweet.classifications[0].tag_name
+const formatData = (sentimentData: SentimentDataPoint[]): FormattedTweet[] => {
+  const finalTweets = sentimentData.map((dataPoint) => ({
+    text: dataPoint.text,
+    sentiment: dataPoint.classifications[0].tag_name
   }));
   return finalTweets;
 };
