@@ -14,7 +14,7 @@ const AssetIcon = ({ asset }: AssetIconProps) => (
   >
     <Image
       maxBlockSize="110px"
-      src={`/${asset}.png`}
+      src={`/${asset}.svg`}
       alt="Asset Icon"
       borderRadius="8px"
     />
