@@ -6,7 +6,7 @@ export default function About() {
     <>
       <Head>
         <title>To The Moon</title>
-        <meta name="Home Page" content="CryptoDigest Home Page" />
+        <meta name="About Page" content="About To The Moon" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Flex direction="column" justifyContent="center" alignItems="center">
