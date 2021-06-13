@@ -5,10 +5,11 @@ type SectionProps = {
   title: string;
   href: string;
   image: string;
+  onClick: any /*I will find the correct type later*/;
 };
 
-const Section = ({ title, href, image }: SectionProps) => (
-  <Link as={NextLink} href={href}>
+const Section = ({ title, href, image, onClick }: SectionProps) => (
+  <Link as={NextLink} href={href} onClick={onClick}>
     <Flex
       h="100%"
       flexDirection="column"
