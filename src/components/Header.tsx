@@ -1,6 +1,15 @@
-import { Flex, Heading, Box, Link, useColorModeValue } from '@chakra-ui/react';
+import {
+  Flex,
+  Heading,
+  Box,
+  Link,
+  useColorModeValue,
+  Button
+} from '@chakra-ui/react';
+import { HamburgerIcon } from '@chakra-ui/icons';
 
 import ColorModeChanger from './ColorModeChanger';
+
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
@@ -25,8 +34,8 @@ const Header = ({ h }: HeaderProps) => {
         </Box>
       </Flex>
       {router.route !== '/' && (
-        <Button>
-          <HamburgerIcon></HamburgerIcon>
+        <Button variant="ghost">
+          <HamburgerIcon variant="ghost"></HamburgerIcon>
         </Button>
       )}
     </Flex>
