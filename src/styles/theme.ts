@@ -7,25 +7,14 @@ const theme = extendTheme({
     useSystemColorMode: true
   },
   fonts: {
-    body: 'Roboto'
+    body: 'Lato'
   },
   styles: {
     global: (props) => ({
       'body, h2, p': {
-        color: mode('gray.700', 'whiteAlpha.900')(props)
+        color: mode('black', 'white')(props)
       }
     })
-  },
-  colors: {
-    brand: {
-      text1: '#ebbbff',
-      text2: '#7aa6da',
-      bg: '#002451',
-      positive: '#d1f1a9',
-      negative: '#d54e53',
-      orange: '#ffc58f',
-      yellow: '#ffeead'
-    }
   }
 });
 

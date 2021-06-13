@@ -32,11 +32,13 @@ const links: Link[] = [
 
 type FooterProps = {
   h: string;
+  bg?: string;
 };
 
 const Footer = ({ h }: FooterProps) => (
   <Flex
     as="footer"
+    // bg={bg}
     marginY={2}
     h={h}
     justifyContent="center"

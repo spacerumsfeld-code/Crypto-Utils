@@ -27,13 +27,13 @@ type HeaderProps = {
 
 const Header = ({ h }: HeaderProps) => {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const bg = useColorModeValue('white', 'black');
+  const bg = useColorModeValue('linkedin.700', 'linkedin.900');
   const router = useRouter();
 
   return (
     <Flex h={h} bg={bg} justify="right" alignItems="center" pl="1rem">
       <Flex align="center">
-        <Heading bgClip="text" bgGradient="linear(to-t, teal.200, blue.500)">
+        <Heading>
           <Link as={NextLink} href="/">
             Crypto Digest
           </Link>
@@ -47,10 +47,10 @@ const Header = ({ h }: HeaderProps) => {
           <Button onClick={onOpen} variant="ghost">
             <HamburgerIcon></HamburgerIcon>
           </Button>
-          <Drawer onClose={onClose} isOpen={isOpen}>
+          <Drawer onClose={onClose} isOpen={isOpen} size="full">
             <DrawerOverlay>
               <DrawerContent>
-                <DrawerHeader>
+                <DrawerHeader fontWeight="bold">
                   Navigation
                   <DrawerCloseButton />
                 </DrawerHeader>
