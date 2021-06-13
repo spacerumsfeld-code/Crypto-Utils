@@ -4,7 +4,11 @@ import SectionItem from '@/components/Section';
 
 import assets from '@/lib/assets';
 
-const Nav = ({ onClose }) => {
+interface NavProps {
+  onClose: () => void;
+}
+
+const Nav = ({ onClose }: NavProps) => {
   return (
     <SimpleGrid width="100%" gap={8} minChildWidth="11rem" gridAutoRows="1fr">
       {assets.map((asset) => (
