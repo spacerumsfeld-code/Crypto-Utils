@@ -21,6 +21,8 @@ import Nav from '@/components/Nav';
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
 
+//when nextAuth incorporated, have a button on the head for login/signup. This is where the portal to authentication will be.
+
 type HeaderProps = {
   h: string;
 };
