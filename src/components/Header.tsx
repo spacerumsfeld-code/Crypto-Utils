@@ -2,6 +2,7 @@ import { Flex, Heading, Box, Link, useColorModeValue } from '@chakra-ui/react';
 
 import ColorModeChanger from './ColorModeChanger';
 import NextLink from 'next/link';
+import { useRouter } from 'next/router';
 
 type HeaderProps = {
   h: string;
