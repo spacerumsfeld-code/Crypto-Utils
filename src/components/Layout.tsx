@@ -11,7 +11,7 @@ const Layout = ({ children }: LayoutProps) => {
   const bg = useColorModeValue('linkedin.100', 'gray.700');
 
   return (
-    <Flex direction="column" h="100vh">
+    <Flex direction="column" h="100%">
       <Header h="4rem" />
       <Box
         color="black"
