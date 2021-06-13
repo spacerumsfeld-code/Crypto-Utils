@@ -17,15 +17,6 @@ import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
 import utils from '@/lib/utils';
 
-const tweets = [
-  { text: 'hahahahahahahaahah' },
-  { text: 'hahahahahahahaahah' },
-  { text: 'hahahahahahahaahah' },
-  { text: 'hahahahahahahaahah' },
-  { text: 'hahahahahahahaahah' },
-  { text: 'hahahahahahahaahah' }
-];
-
 type Tweet = {
   text: string;
   sentiment: string;
