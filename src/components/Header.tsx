@@ -10,7 +10,7 @@ type HeaderProps = {
 
 const Header = ({ h }: HeaderProps) => {
   const bg = useColorModeValue('white', 'black');
-  //router
+  const router = useRouter();
 
   return (
     <Flex h={h} bg={bg} justify="right" alignItems="center" pl="1em">
