@@ -22,7 +22,7 @@ const Header = ({ h }: HeaderProps) => {
   const router = useRouter();
 
   return (
-    <Flex h={h} bg={bg} justify="right" alignItems="center" pl="1em">
+    <Flex h={h} bg={bg} justify="space-between" alignItems="center" pl="1rem">
       <Flex align="center">
         <Heading bgClip="text" bgGradient="linear(to-t, teal.200, blue.500)">
           <Link as={NextLink} href="/">
@@ -35,7 +35,7 @@ const Header = ({ h }: HeaderProps) => {
       </Flex>
       {router.route !== '/' && (
         <Button variant="ghost">
-          <HamburgerIcon variant="ghost"></HamburgerIcon>
+          <HamburgerIcon></HamburgerIcon>
         </Button>
       )}
     </Flex>
