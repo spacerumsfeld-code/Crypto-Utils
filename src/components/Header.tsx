@@ -15,7 +15,8 @@ import {
 } from '@chakra-ui/react';
 import { HamburgerIcon } from '@chakra-ui/icons';
 
-import ColorModeChanger from './ColorModeChanger';
+import ColorModeChanger from '@/components/ColorModeChanger';
+import Nav from '@/components/Nav';
 
 import NextLink from 'next/link';
 import { useRouter } from 'next/router';
@@ -42,9 +43,24 @@ const Header = ({ h }: HeaderProps) => {
         </Box>
       </Flex>
       {router.route !== '/' && (
-        <Button variant="ghost">
-          <HamburgerIcon></HamburgerIcon>
-        </Button>
+        <>
+          <Button onClick={onOpen} variant="ghost">
+            <HamburgerIcon></HamburgerIcon>
+          </Button>
+          <Drawer onClose={onClose} isOpen={isOpen}>
+            <DrawerOverlay>
+              <DrawerContent>
+                <DrawerHeader>
+                  Navigation
+                  <DrawerCloseButton />
+                </DrawerHeader>
+                <DrawerBody>
+                  <Nav onClose={onClose} />
+                </DrawerBody>
+              </DrawerContent>
+            </DrawerOverlay>
+          </Drawer>
+        </>
       )}
     </Flex>
   );
