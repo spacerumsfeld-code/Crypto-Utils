@@ -25,6 +25,7 @@ type HeaderProps = {
 };
 
 const Header = ({ h }: HeaderProps) => {
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const bg = useColorModeValue('white', 'black');
   const router = useRouter();
 
