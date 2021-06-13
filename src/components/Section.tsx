@@ -5,7 +5,7 @@ type SectionProps = {
   title: string;
   href: string;
   image: string;
-  onClick: any /*I will find the correct type later*/;
+  onClick?: any /*I will find the correct type later*/;
 };
 
 const Section = ({ title, href, image, onClick }: SectionProps) => (
