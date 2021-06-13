@@ -1,5 +1,7 @@
 import { Box, Text } from '@chakra-ui/react';
 
+//add positive and negative to props, bring in utility function that assigns sentiment descriptors based on ratios in those props, render from the result of the util with template literals
+
 const Summary = () => (
   <Box mb={4} textAlign="center">
     <Text fontSize={['md', 'lg']}>
