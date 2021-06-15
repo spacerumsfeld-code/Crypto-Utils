@@ -1,5 +1,7 @@
 import { Box, Image } from '@chakra-ui/react';
 
+const argh: string = 'what the hell';
+
 type AssetIconProps = {
   asset: string;
 };
