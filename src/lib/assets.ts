@@ -1,5 +1,3 @@
-//to-do: import images
-
 type Asset = {
   title: string;
   href: string;

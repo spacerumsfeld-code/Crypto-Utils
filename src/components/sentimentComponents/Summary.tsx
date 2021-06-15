@@ -17,9 +17,9 @@ const Summary = ({ asset, positiveCount, negativeCount }: SummaryProps) => {
     <Box fontSize={['md', 'lg']} mb={4} textAlign="center">
       <Text d="inline">{`Currently, overall market sentiment toward ${asset} is`}</Text>
       <Text d="inline" color={color}>
-        {` ${sentiment} with`}
+        {` ${sentiment}`}
       </Text>
-      <Text d="inline block">{` ${positiveCount} positive tweets and ${negativeCount} negative tweets from a representative sample. The market is in a state of`}</Text>
+      <Text d="inline block">{` with ${positiveCount} positive tweets and ${negativeCount} negative tweets from a representative sample. The market is in a state of`}</Text>
       <Text color={color}>{` ${emotion}.`}</Text>
     </Box>
   );
