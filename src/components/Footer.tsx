@@ -38,7 +38,6 @@ type FooterProps = {
 const Footer = ({ h }: FooterProps) => (
   <Flex
     as="footer"
-    // bg={bg}
     marginY={2}
     h={h}
     justifyContent="center"

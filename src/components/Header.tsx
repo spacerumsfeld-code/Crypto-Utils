@@ -37,7 +37,7 @@ const Header = ({ h }: HeaderProps) => {
       <Flex align="center">
         <Heading>
           <Link as={NextLink} href="/">
-            Crypto Digest
+            Crypto-Utils
           </Link>
         </Heading>
         <Box flex={1} ml={1}>
