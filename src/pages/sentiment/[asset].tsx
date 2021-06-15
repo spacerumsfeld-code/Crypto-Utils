@@ -15,6 +15,7 @@ import Summary from '@/sentimentComponents/Summary';
 import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
+import { GetStaticProps, GetStaticPaths } from 'next';
 import utils from '@/lib/utils';
 
 type Tweet = {
@@ -70,7 +71,7 @@ const SentimentPage = ({
   </Flex>
 );
 
-export async function getStaticPaths() {
+export const getStaticPaths: GetStaticPaths = async () => {
   return {
     paths: [
       { params: { asset: 'bitcoin' } },
@@ -79,13 +80,16 @@ export async function getStaticPaths() {
     ],
     fallback: false
   };
-}
+};
 
-export async function getStaticProps({ params }) {
-  console.log(params);
-  const asset = params.asset;
+export const getStaticProps: GetStaticProps = async ({ params }) => {
+  const asset = params?.asset;
   const tweets = await utils.getTweets(asset);
+  if (!tweets) return { notFound: true };
+
   const sentimentData = await utils.analyzeSentiment(tweets);
+  if (!sentimentData) return { notFound: true };
+
   const formattedTweets = utils.formatData(sentimentData);
   const positiveTweets = formattedTweets.filter(
     ({ sentiment }) => sentiment === 'Positive'
@@ -101,6 +105,6 @@ export async function getStaticProps({ params }) {
       negativeTweets
     }
   };
-}
+};
 
 export default SentimentPage;

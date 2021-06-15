@@ -5,9 +5,12 @@ type Tweet = {
   text: string;
 };
 
-/* I cast the options object as AxiosRequestConfig because if I did not, the "method" property was being flagged. This is because in the typing, method must have the method wrapped in double quotes. Quite a silly obstruction to run into.*/
+//'asset' is cast as possibly undefined, even though under no circumstances will it be. Here is the chain that lead to this: getStaticPaths (defined params /w "asset" property, which is a string):
+//getStaticProps typing thinks params COULD be undefined (even though in this context it never will be), and therefore the "asset" property could be undefined. So, to make TS happy 'undefined' has been added as a potential input here. But it cannot occur in our circumstance.
 
-const getTweets = async (asset: string): Promise<Tweet[] | undefined> => {
+const getTweets = async (
+  asset: string | string[] | undefined
+): Promise<Tweet[] | undefined> => {
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
@@ -28,17 +31,17 @@ const getTweets = async (asset: string): Promise<Tweet[] | undefined> => {
   }
 };
 
-type ClassificationData = {
-  tag_name: string;
-  tag_id: number;
-  confidence: number;
-};
-
 type SentimentDataPoint = {
   text: string;
   external_id: boolean;
   error: boolean;
   classifications: ClassificationData[];
+};
+
+type ClassificationData = {
+  tag_name: string;
+  tag_id: number;
+  confidence: number;
 };
 
 const analyzeSentiment = async (
@@ -58,7 +61,7 @@ const analyzeSentiment = async (
       }
     };
     const response: AxiosResponse = await axios(options);
-    const newTweets = response.data;
+    const newTweets: SentimentDataPoint[] = response.data;
     return newTweets;
   } catch (err) {
     console.log(err);
