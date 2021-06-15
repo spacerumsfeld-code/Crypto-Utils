@@ -16,7 +16,7 @@ import PositiveTweets from '@/sentimentComponents/PositiveTweets';
 import NegativeTweets from '@/sentimentComponents/NegativeTweets';
 
 import { GetStaticProps, GetStaticPaths } from 'next';
-import utils from '@/lib/utils';
+import utils from '@/lib/sentiment-utils';
 
 type Tweet = {
   text: string;
