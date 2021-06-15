@@ -38,7 +38,11 @@ const SentimentPage = ({
     <SHeader asset={asset} />
     <AssetIcon asset={asset} />
     <Stack w={['80%', '70%']}>
-      <Summary />
+      <Summary
+        asset={asset}
+        positiveCount={positiveTweets.length}
+        negativeCount={negativeTweets.length}
+      />
       <Accordion allowMultiple allowToggle>
         <AccordionItem>
           <h2>
