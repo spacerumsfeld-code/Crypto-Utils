@@ -20,17 +20,17 @@ const assets: Asset[] = [
   {
     title: 'Bitcoin',
     href: '/sentiment/bitcoin',
-    image: '/bitcoin.svg'
+    image: '/Bitcoin.svg'
   },
   {
     title: 'Ethereum',
     href: '/sentiment/ethereum',
-    image: '/ethereum.svg'
+    image: '/Ethereum.svg'
   },
   {
     title: 'Dogecoin',
     href: '/sentiment/dogecoin',
-    image: '/dogecoin.svg'
+    image: '/Dogecoin.svg'
   }
 ];
 
