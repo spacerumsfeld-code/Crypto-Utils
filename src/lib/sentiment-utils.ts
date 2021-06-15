@@ -5,8 +5,7 @@ type Tweet = {
   text: string;
 };
 
-//'asset' is cast as possibly undefined, even though under no circumstances will it be. Here is the chain that lead to this: getStaticPaths (defined params /w "asset" property, which is a string):
-//getStaticProps typing thinks params COULD be undefined (even though in this context it never will be), and therefore the "asset" property could be undefined. So, to make TS happy 'undefined' has been added as a potential input here. But it cannot occur in our circumstance.
+//'asset' is cast as possibly undefined or an array of strings here even though it never will be in order to make typescript happy. this originates in the loose typing of 'params' in the getStaticProps function seen in the [asset] page.
 
 const getTweets = async (
   asset: string | string[] | undefined
@@ -81,5 +80,23 @@ const formatData = (sentimentData: SentimentDataPoint[]): FormattedTweet[] => {
   return finalTweets;
 };
 
-const utils = { getTweets, analyzeSentiment, formatData };
+const setSentiment = (
+  positiveCount: number,
+  negativeCount: number
+): [string, string] => {
+  const ratio = positiveCount / negativeCount;
+
+  if (ratio === 0) return ['extremely positive', 'euphoria'];
+  return ratio >= 0.75
+    ? ['extremely positive', 'euphoria']
+    : ratio >= 0.55
+    ? ['quite positive', 'excitement']
+    : ratio >= 0.45
+    ? ['neutral', 'uncertainty']
+    : ratio >= 0.25
+    ? ['very negative', 'fear']
+    : ['extremely negative', 'panic'];
+};
+
+const utils = { getTweets, analyzeSentiment, formatData, setSentiment };
 export default utils;

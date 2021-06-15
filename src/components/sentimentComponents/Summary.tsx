@@ -1,6 +1,6 @@
 import { Box, Text } from '@chakra-ui/react';
 
-import setSentiment from '@/lib/sentiment-utils';
+import utils from '@/lib/sentiment-utils';
 
 type SummaryProps = {
   asset: string;
@@ -9,7 +9,7 @@ type SummaryProps = {
 };
 
 const Summary = ({ asset, positiveCount, negativeCount }: SummaryProps) => {
-  const [sentiment, emotion] = setSentiment(positiveCount, negativeCount);
+  const [sentiment, emotion] = utils.setSentiment(positiveCount, negativeCount);
   return (
     <Box mb={4} textAlign="center">
       <Text fontSize={['md', 'lg']}>
