@@ -6,12 +6,7 @@ type AssetIconProps = {
 
 //note: mess with maxBlockSize of image perhaps
 const AssetIcon = ({ asset }: AssetIconProps) => (
-  <Box
-    py="1em"
-    // position={['relative', 'relative', 'relative', 'relative', 'absolute']}
-    // top={[null, null, null, null, '5rem']}
-    // left={[null, null, null, null, '27rem']}
-  >
+  <Box py="1em">
     <Image
       maxBlockSize="110px"
       src={`/${asset}.svg`}

@@ -83,19 +83,21 @@ const formatData = (sentimentData: SentimentDataPoint[]): FormattedTweet[] => {
 const setSentiment = (
   positiveCount: number,
   negativeCount: number
-): [string, string] => {
+): string[] => {
   const ratio = positiveCount / negativeCount;
+  const green = 'green.500';
+  const red = 'red.500';
 
-  if (ratio === 0) return ['extremely positive', 'euphoria'];
+  if (ratio === 0) return ['extremely positive', 'euphoria', 'green'];
   return ratio >= 0.75
-    ? ['extremely positive', 'euphoria']
+    ? ['extremely positive', 'euphoria', green]
     : ratio >= 0.55
-    ? ['quite positive', 'excitement']
+    ? ['quite positive', 'excitement', green]
     : ratio >= 0.45
-    ? ['neutral', 'uncertainty']
+    ? ['neutral', 'uncertainty', 'gray.500']
     : ratio >= 0.25
-    ? ['very negative', 'fear']
-    : ['extremely negative', 'panic'];
+    ? ['very negative', 'fear', red]
+    : ['extremely negative', 'panic', red];
 };
 
 const utils = { getTweets, analyzeSentiment, formatData, setSentiment };
