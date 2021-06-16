@@ -49,7 +49,13 @@ const Header = ({ h }: HeaderProps) => {
           <Button onClick={onOpen} variant="ghost">
             <HamburgerIcon></HamburgerIcon>
           </Button>
-          <Drawer onClose={onClose} isOpen={isOpen} size="full">
+          <Drawer
+            closeOnOverlayClick
+            onClose={onClose}
+            isOpen={isOpen}
+            // size="full"
+            placement="right"
+          >
             <DrawerOverlay>
               <DrawerContent>
                 <DrawerHeader fontWeight="bold">
