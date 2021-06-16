@@ -4,9 +4,32 @@ import {
   Heading,
   Text,
   useColorModeValue,
-  SimpleGrid
+  SimpleGrid,
+  Stack,
+  Icon
 } from '@chakra-ui/react';
 import Head from 'next/head';
+
+const Feature = ({ title, text, icon }: FeatureProps) => {
+  return (
+    <Stack>
+      <Flex
+        w={16}
+        h={16}
+        align={'center'}
+        justify={'center'}
+        color={'white'}
+        rounded={'full'}
+        bg={'gray.100'}
+        mb={1}
+      >
+        {icon}
+      </Flex>
+      <Text fontWeight={600}>{title}</Text>
+      <Text color={'gray.600'}>{text}</Text>
+    </Stack>
+  );
+};
 
 export default function About() {
   const bg = useColorModeValue('white', 'gray.800');
@@ -39,7 +62,10 @@ export default function About() {
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
           <Text>Here are our current and planned utilities:</Text>
-          <SimpleGrid></SimpleGrid>
+          <SimpleGrid space={10} columns={[1, 3]}>
+            <Feature icon={FcAreaChart} title={'Live Price Data'} text={'Get live price data and stuff'} />
+            <Feature icon={}
+          </SimpleGrid>
         </Flex>
       </Container>
     </>
