@@ -22,7 +22,7 @@ const Section = ({ title, href, image, onClick }: SectionProps) => (
         shadow="xl"
         // bgImage="/card-background.svg"
         // bgPosition="center"
-        // bgSize="cover"
+        // bgSize="100%"
       >
         <Box flex={1}>
           <Image objectFit="contain" src={image} alt={title} />

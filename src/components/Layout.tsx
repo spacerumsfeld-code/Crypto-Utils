@@ -18,13 +18,11 @@ const Layout = ({ children }: LayoutProps) => {
         flex="1"
         padding="1rem"
         margin="0 auto"
-        h="100%"
-        w="100%"
-        // bg={bg}
-        bgImage="/main-background.svg"
-        bgSize="cover"
-        bgPosition="center"
-        bgRepeat="no-repeat"
+        width="100%"
+        bg={bg}
+        // bgImage="/main-background.svg"
+        // bgSize="100v"
+        // bgRepeat="no-repeat"
       >
         {children}
       </Box>
