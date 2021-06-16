@@ -53,7 +53,6 @@ const Header = ({ h }: HeaderProps) => {
             closeOnOverlayClick
             onClose={onClose}
             isOpen={isOpen}
-            // size="full"
             placement="right"
           >
             <DrawerOverlay>
