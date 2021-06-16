@@ -8,7 +8,17 @@ import {
   Stack,
   Icon
 } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 import Head from 'next/head';
+
+import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc'
+import { RiEmotionHappyLine } from 'react-icons/ri'
+
+type FeatureProps = {
+  title: string,
+  text: string,
+  icon: ReactElement
+}
 
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
