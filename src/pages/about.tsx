@@ -1,17 +1,22 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import { Container, Flex, Heading, Text } from '@chakra-ui/react';
 import Head from 'next/head';
 
 export default function About() {
   return (
     <>
       <Head>
-        <title>To The Moon</title>
-        <meta name="About Page" content="About To The Moon" />
+        <title>About</title>
+        <meta name="About Page" content="About Crypto-Utils" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex direction="column" justifyContent="center" alignItems="center">
-        <Heading>About Page!</Heading>
-      </Flex>
+      <Container>
+        <Flex direction="column" justifyContent="center" alignItems="center">
+          <Heading>About Crypto-Utils</Heading>
+          <Text>
+            Welcome to Crypt-Utils, an application with all the tools you need!
+          </Text>
+        </Flex>
+      </Container>
     </>
   );
 }

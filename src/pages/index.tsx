@@ -11,8 +11,8 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>To The Moon</title>
-        <meta name="Home Page" content="CryptoDigest Home Page" />
+        <title>Crypto-Utils</title>
+        <meta name="Home Page" content="Crypto-Utils" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <SimpleGrid w="100%" gap={8} minChildWidth="20em" gridAutoRows="1fr">
