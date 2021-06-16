@@ -8,7 +8,7 @@ import {
 import Head from 'next/head';
 
 export default function About() {
-  const bg = useColorModeValue('white', 'black');
+  const bg = useColorModeValue('white', 'gray.800');
   return (
     <>
       <Head>
