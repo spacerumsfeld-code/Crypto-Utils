@@ -3,7 +3,8 @@ import {
   Flex,
   Heading,
   Text,
-  useColorModeValue
+  useColorModeValue,
+  SimpleGrid
 } from '@chakra-ui/react';
 import Head from 'next/head';
 
@@ -37,11 +38,8 @@ export default function About() {
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
-          <Text>
-            Crypto-Utils is your one-stop shop for a variety of utilities
-            pertaining to digital cryptocurrencies.
-          </Text>
-          <Text></Text>
+          <Text>Here are our current and planned utilities:</Text>
+          <SimpleGrid></SimpleGrid>
         </Flex>
       </Container>
     </>
