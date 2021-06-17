@@ -5,39 +5,13 @@ import {
   Text,
   useColorModeValue,
   SimpleGrid,
-  Stack,
   Icon
 } from '@chakra-ui/react';
 import Head from 'next/head';
+import AboutFeature from '@/components/AboutFeature';
 
 import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc';
 import { RiEmotionHappyFill } from 'react-icons/ri';
-
-type FeatureProps = {
-  title: string;
-  text: string;
-  icon: ReactElement;
-};
-
-const Feature = ({ title, text, icon }: FeatureProps) => {
-  return (
-    <Stack align="center">
-      <Flex
-        w={16}
-        h={16}
-        align={'center'}
-        justify={'center'}
-        rounded={'full'}
-        bg={'gray.100'}
-        mb={1}
-      >
-        {icon}
-      </Flex>
-      <Text fontWeight={600}>{title}</Text>
-      <Text>{text}</Text>
-    </Stack>
-  );
-};
 
 export default function About() {
   const bg = useColorModeValue('white', 'gray.800');
@@ -69,21 +43,20 @@ export default function About() {
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
-          <Text my={4}>Here are our current and planned utilities:</Text>
           <SimpleGrid space={10} columns={[1, 3]}>
-            <Feature
+            <AboutFeature
               icon={<Icon as={FcAreaChart} w={10} h={10} />}
               title={'Live Price Data'}
               text={'Get live price data and stuff'}
             />
-            <Feature
+            <AboutFeature
               icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
               title={'Cryptocurrency Converter'}
               text={
-                'Instantly convert your cryptocurrencies at the latest prices'
+                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency'
               }
             />
-            <Feature
+            <AboutFeature
               icon={
                 <Icon
                   as={RiEmotionHappyFill}
