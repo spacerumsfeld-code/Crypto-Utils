@@ -16,7 +16,7 @@ type SectionProps = {
 };
 
 const Section = ({ title, href, image, onClick }: SectionProps) => {
-  const bg = useColorModeValue('white', 'gray.600');
+  const bg = useColorModeValue('white', 'gray.700');
 
   return (
     <NextLink href={href}>

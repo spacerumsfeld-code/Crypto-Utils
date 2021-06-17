@@ -44,7 +44,7 @@ export default function About() {
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
-          <SimpleGrid space={10} columns={[1, 3]}>
+          <SimpleGrid my={[null, 20]} space={10} columns={[1, 3]}>
             <AboutFeature
               icon={<Icon as={FcAreaChart} w={10} h={10} />}
               title={'Live Price Data'}
