@@ -13,7 +13,7 @@ const assets: Asset[] = [
   {
     title: 'About',
     href: '/about',
-    image: '/section-image.png'
+    image: '/about-arrow.svg'
   },
   {
     title: 'Bitcoin',

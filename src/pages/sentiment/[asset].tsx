@@ -39,6 +39,7 @@ const SentimentPage = ({
   const bg = useColorModeValue('white', 'gray.800');
   return (
     <Container
+      borderRadius="8px"
       h="100%"
       p="1rem"
       maxW={['80%', '70%']}
