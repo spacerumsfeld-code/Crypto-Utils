@@ -13,7 +13,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=100`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
