@@ -32,7 +32,6 @@ const links: Link[] = [
 
 type FooterProps = {
   h: string;
-  bg?: string;
 };
 
 const Footer = ({ h }: FooterProps) => (

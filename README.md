@@ -22,11 +22,6 @@ Placeholder
 
 # Get Started
 
-1. Clone this repository
-2. Run "npm install"
-3. Proceed to Section 1!
-4. Visit Section 0 and attempt the practice problems once you have completed a section; for your convenience, the following scripts are available:
-
 # Screenshots / Demo Video
 
 # Acknowledgements
