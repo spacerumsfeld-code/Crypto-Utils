@@ -13,7 +13,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=100`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=1`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
@@ -30,42 +30,69 @@ const getTweets = async (
   }
 };
 
+// {
+//   "type": "negative",
+//   "score": -0.631041285,
+//   "ratio": -1,
+//   "keywords": [
+//       {
+//           "word": "scam",
+//           "score": -0.631041285
+//       }
+//   ],
+//   "version": "7.0.8",
+//   "author": "twinword inc.",
+//   "email": "help@twinword.com",
+//   "result_code": "200",
+//   "result_msg": "Success"
+// }
+
+type KeyWord = {
+  word: string;
+  score: number;
+};
+
 type SentimentDataPoint = {
-  text: string;
-  external_id: boolean;
-  error: boolean;
-  classifications: ClassificationData[];
+  type: string;
+  score: number;
+  ratio: number;
+  keywords: KeyWord[];
+  version: string;
+  author: string;
+  email: string;
+  result_code: string;
+  result_msg: string;
 };
 
-type ClassificationData = {
-  tag_name: string;
-  tag_id: number;
-  confidence: number;
+const analyzeSentiment = async (tweets: Tweet[]
 };
 
-const analyzeSentiment = async (
-  tweets: Tweet[]
-): Promise<SentimentDataPoint[] | undefined> => {
-  const processedTweets = tweets.map(({ text }) => text);
-  try {
-    const options: AxiosRequestConfig = {
-      method: 'POST',
-      url: `${process.env.MONKEY_API}`,
-      headers: {
-        Authorization: `Token ${process.env.MONKEY_TOKEN}`,
-        'Content-Type': 'application/json'
-      },
-      data: {
-        data: processedTweets
-      }
-    };
-    const response: AxiosResponse = await axios(options);
-    const newTweets: SentimentDataPoint[] = response.data;
-    return newTweets;
-  } catch (err) {
-    console.log(err);
-  }
-};
+// const analyzeSentiment = async (
+//   tweets: Tweet[]
+// ): Promise<SentimentDataPoint[] | undefined> => {
+//   const processedTweets = tweets.map(({ text }) => text);
+//   try {
+//     const options: AxiosRequestConfig = {
+//       method: 'POST',
+//       //new url
+//       url: `${process.env.MONKEY_API}`,
+//       headers: {
+//         //new headers
+//         Authorization: `Token ${process.env.MONKEY_TOKEN}`,
+//         'Content-Type': 'application/json'
+//       },
+//       data: {
+//         //will data still work?
+//         data: processedTweets
+//       }
+//     };
+//     const response: AxiosResponse = await axios(options);
+//     const newTweets: SentimentDataPoint[] = response.data;
+//     return newTweets;
+//   } catch (err) {
+//     console.log(err);
+//   }
+// };
 
 type FormattedTweet = {
   text: string;
