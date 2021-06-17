@@ -44,7 +44,6 @@ export default function About() {
             Crypto-Utils is designed to be your one-stop shop for a variety of
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
-            Stay tuned, as new utilities are being added!
           </Text>
           <SimpleGrid mt={[null, 17]} space={10} columns={[1, 3]}>
             <AboutFeature
@@ -58,7 +57,7 @@ export default function About() {
               icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
               title={'Cryptocurrency Converter'}
               text={
-                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency [IN PRODUCTION]'
+                'Instantly see the conversion rate for your asset of choice [IN PRODUCTION]'
               }
             />
             <AboutFeature
@@ -72,7 +71,7 @@ export default function About() {
               }
               title={'Sentiment Analyzer'}
               text={
-                'Get a daily recap of market sentiment towards your favorite asset [LIVE]'
+                'Get a daily recap of market sentiment for your favorite asset [LIVE]'
               }
             />
           </SimpleGrid>
