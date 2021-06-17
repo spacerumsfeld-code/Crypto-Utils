@@ -63,7 +63,7 @@ export default function About() {
         >
           <Heading fontSize="4vw">Welcome to Crypto-Utils</Heading>
           <Text fontSize={['0.9em', '1.3em']}>
-            A Digital Cryptocurrency Utility Platform
+            A Minimalist Digital Cryptocurrency Utility Platform
           </Text>
           <Text my={4}>
             Crypto-Utils is designed to be your one-stop shop for a variety of
@@ -85,7 +85,14 @@ export default function About() {
               }
             />
             <Feature
-              icon={<Icon as={RiEmotionHappyFill} w={10} h={10} />}
+              icon={
+                <Icon
+                  as={RiEmotionHappyFill}
+                  w={10}
+                  h={10}
+                  color="yellow.500"
+                />
+              }
               title={'Sentiment Analyzer'}
               text={'Get the latest market sentiment'}
             />
