@@ -7,7 +7,7 @@ type FeatureProps = {
   icon: ReactElement;
 };
 
-const Feature = ({ title, text, icon }: FeatureProps) => {
+const AboutFeature = ({ title, text, icon }: FeatureProps) => {
   return (
     <Stack align="center">
       <Flex
@@ -27,4 +27,4 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
   );
 };
 
-export default Feature;
+export default AboutFeature;
