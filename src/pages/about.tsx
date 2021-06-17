@@ -1,17 +1,103 @@
-import { Flex, Heading } from '@chakra-ui/react';
+import {
+  Container,
+  Flex,
+  Heading,
+  Text,
+  useColorModeValue,
+  SimpleGrid,
+  Stack,
+  Icon
+} from '@chakra-ui/react';
 import Head from 'next/head';
 
+import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc';
+import { RiEmotionHappyFill } from 'react-icons/ri';
+
+type FeatureProps = {
+  title: string;
+  text: string;
+  icon: ReactElement;
+};
+
+const Feature = ({ title, text, icon }: FeatureProps) => {
+  return (
+    <Stack align="center">
+      <Flex
+        w={16}
+        h={16}
+        align={'center'}
+        justify={'center'}
+        rounded={'full'}
+        bg={'gray.100'}
+        mb={1}
+      >
+        {icon}
+      </Flex>
+      <Text fontWeight={600}>{title}</Text>
+      <Text>{text}</Text>
+    </Stack>
+  );
+};
+
 export default function About() {
+  const bg = useColorModeValue('white', 'gray.800');
   return (
     <>
       <Head>
-        <title>To The Moon</title>
-        <meta name="About Page" content="About To The Moon" />
+        <title>About</title>
+        <meta name="About Page" content="About Crypto-Utils" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Flex direction="column" justifyContent="center" alignItems="center">
-        <Heading>About Page!</Heading>
-      </Flex>
+      <Container
+        h="100%"
+        maxW="70%"
+        bg={bg}
+        shadow="rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px"
+      >
+        <Flex
+          textAlign="center"
+          direction="column"
+          justifyContent="center"
+          alignItems="center"
+        >
+          <Heading fontSize="4vw">Welcome to Crypto-Utils</Heading>
+          <Text fontSize={['0.9em', '1.3em']}>
+            A Minimalist Digital Cryptocurrency Utility Platform
+          </Text>
+          <Text my={4}>
+            Crypto-Utils is designed to be your one-stop shop for a variety of
+            digital cryptocurrency utilities. You shouldn&apos;t have to scour
+            the web for your favorite tools, and now you don&apos;t have to!
+          </Text>
+          <Text my={4}>Here are our current and planned utilities:</Text>
+          <SimpleGrid space={10} columns={[1, 3]}>
+            <Feature
+              icon={<Icon as={FcAreaChart} w={10} h={10} />}
+              title={'Live Price Data'}
+              text={'Get live price data and stuff'}
+            />
+            <Feature
+              icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
+              title={'Cryptocurrency Converter'}
+              text={
+                'Instantly convert your cryptocurrencies at the latest prices'
+              }
+            />
+            <Feature
+              icon={
+                <Icon
+                  as={RiEmotionHappyFill}
+                  w={10}
+                  h={10}
+                  color="yellow.500"
+                />
+              }
+              title={'Sentiment Analyzer'}
+              text={'Get the latest market sentiment'}
+            />
+          </SimpleGrid>
+        </Flex>
+      </Container>
     </>
   );
 }
