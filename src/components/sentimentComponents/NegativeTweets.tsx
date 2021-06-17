@@ -26,7 +26,9 @@ const NegativeTweets = ({ negative }: NegativeTweetsProps) => {
       align="stretch"
     >
       {negative.map((tweet) => (
-        <Text key={tweet.text}>{tweet.text}</Text>
+        <Text fontSize={['md', 'lg']} key={tweet.text}>
+          {tweet.text}
+        </Text>
       ))}
     </VStack>
   );
