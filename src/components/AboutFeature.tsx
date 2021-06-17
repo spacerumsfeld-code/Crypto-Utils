@@ -6,6 +6,7 @@ type FeatureProps = {
   text: string;
   icon: ReactElement;
 };
+
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
     <Stack align="center">
@@ -25,3 +26,5 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
     </Stack>
   );
 };
+
+export default Feature;
