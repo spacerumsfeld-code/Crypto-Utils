@@ -17,6 +17,7 @@ const AboutFeature = ({ title, text, icon }: FeatureProps) => {
         justify={'center'}
         rounded={'full'}
         bg={'gray.100'}
+        mt={2}
         mb={1}
       >
         {icon}
