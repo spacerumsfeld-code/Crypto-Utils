@@ -1,5 +1,11 @@
-import { Stack, Flex, Text } from '@charka-ui/react';
+import { Stack, Flex, Text } from '@chakra-ui/react';
+import { ReactElement } from 'react';
 
+type FeatureProps = {
+  title: string;
+  text: string;
+  icon: ReactElement;
+};
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
     <Stack align="center">

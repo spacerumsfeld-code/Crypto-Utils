@@ -9,7 +9,6 @@ import {
   Icon
 } from '@chakra-ui/react';
 import Head from 'next/head';
-import { ReactElement } from 'react';
 
 import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc';
 import { RiEmotionHappyFill } from 'react-icons/ri';
