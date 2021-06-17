@@ -47,13 +47,15 @@ export default function About() {
             <AboutFeature
               icon={<Icon as={FcAreaChart} w={10} h={10} />}
               title={'Live Price Data'}
-              text={'Get live price data and stuff'}
+              text={
+                'Get live price data and metrics for your favorite asset [IN PRODUCTION]'
+              }
             />
             <AboutFeature
               icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
               title={'Cryptocurrency Converter'}
               text={
-                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency'
+                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency [IN PRODUCTION]'
               }
             />
             <AboutFeature
@@ -66,7 +68,9 @@ export default function About() {
                 />
               }
               title={'Sentiment Analyzer'}
-              text={'Get the latest market sentiment'}
+              text={
+                'Get a daily recap of market sentiment towards your favorite asset [LIVE]'
+              }
             />
           </SimpleGrid>
         </Flex>
