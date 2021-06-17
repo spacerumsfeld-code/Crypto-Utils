@@ -8,27 +8,26 @@ import {
   Stack,
   Icon
 } from '@chakra-ui/react';
-import { ReactElement } from 'react';
 import Head from 'next/head';
+import { ReactElement } from 'react';
 
-import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc'
-import { RiEmotionHappyLine } from 'react-icons/ri'
+import { FcAreaChart, FcCurrencyExchange } from 'react-icons/fc';
+import { RiEmotionHappyFill } from 'react-icons/ri';
 
 type FeatureProps = {
-  title: string,
-  text: string,
-  icon: ReactElement
-}
+  title: string;
+  text: string;
+  icon: ReactElement;
+};
 
 const Feature = ({ title, text, icon }: FeatureProps) => {
   return (
-    <Stack>
+    <Stack align="center">
       <Flex
         w={16}
         h={16}
         align={'center'}
         justify={'center'}
-        color={'white'}
         rounded={'full'}
         bg={'gray.100'}
         mb={1}
@@ -36,7 +35,7 @@ const Feature = ({ title, text, icon }: FeatureProps) => {
         {icon}
       </Flex>
       <Text fontWeight={600}>{title}</Text>
-      <Text color={'gray.600'}>{text}</Text>
+      <Text>{text}</Text>
     </Stack>
   );
 };
@@ -71,10 +70,25 @@ export default function About() {
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
-          <Text>Here are our current and planned utilities:</Text>
+          <Text my={4}>Here are our current and planned utilities:</Text>
           <SimpleGrid space={10} columns={[1, 3]}>
-            <Feature icon={FcAreaChart} title={'Live Price Data'} text={'Get live price data and stuff'} />
-            <Feature icon={}
+            <Feature
+              icon={<Icon as={FcAreaChart} w={10} h={10} />}
+              title={'Live Price Data'}
+              text={'Get live price data and stuff'}
+            />
+            <Feature
+              icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
+              title={'Cryptocurrency Converter'}
+              text={
+                'Instantly convert your cryptocurrencies at the latest prices'
+              }
+            />
+            <Feature
+              icon={<Icon as={RiEmotionHappyFill} w={10} h={10} />}
+              title={'Sentiment Analyzer'}
+              text={'Get the latest market sentiment'}
+            />
           </SimpleGrid>
         </Flex>
       </Container>
