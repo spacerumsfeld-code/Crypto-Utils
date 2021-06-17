@@ -6,7 +6,7 @@ type SHeaderProps = {
 
 const SHeader = ({ asset }: SHeaderProps) => (
   <Flex flexDirection="column" justifyContent="center" alignItems="center">
-    <Heading fontSize="5vw">Sentiment</Heading>
+    <Heading fontSize="4vw">Sentiment</Heading>
     <Text
       fontSize={['0.9em', '1.3em']}
     >{`Your ${asset} sentiment for the day, as of PLACEHOLDER`}</Text>
