@@ -89,6 +89,9 @@ const setSentiment = (
   const red = 'red.500';
 
   if (ratio === 0) return ['extremely positive', 'euphoria', 'green'];
+  else if (positiveCount === 0 && negativeCount === 0)
+    return ['neutral', 'uncertainty', 'gray.500'];
+
   return ratio >= 0.75
     ? ['extremely positive', 'euphoria', green]
     : ratio >= 0.55

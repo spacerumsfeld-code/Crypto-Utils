@@ -40,12 +40,12 @@ export default function About() {
           <Text fontSize={['0.9em', '1.3em']}>
             A Minimalist Digital Cryptocurrency Utility Platform
           </Text>
-          <Text my={4}>
+          <Text my={[null, 10]}>
             Crypto-Utils is designed to be your one-stop shop for a variety of
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
           </Text>
-          <SimpleGrid my={[null, 20]} space={10} columns={[1, 3]}>
+          <SimpleGrid my={[null, 10]} space={10} columns={[1, 3]}>
             <AboutFeature
               icon={<Icon as={FcAreaChart} w={10} h={10} />}
               title={'Live Price Data'}
