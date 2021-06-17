@@ -13,7 +13,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=100`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
@@ -89,11 +89,14 @@ const setSentiment = (
   const red = 'red.500';
 
   if (ratio === 0) return ['extremely positive', 'euphoria', 'green'];
-  return ratio >= 0.75
+  else if (positiveCount === negativeCount)
+    return ['neutral', 'uncertainty', 'gray.500'];
+
+  return ratio >= 3
     ? ['extremely positive', 'euphoria', green]
-    : ratio >= 0.55
+    : ratio >= 1.5
     ? ['quite positive', 'excitement', green]
-    : ratio >= 0.45
+    : ratio >= 0.4
     ? ['neutral', 'uncertainty', 'gray.500']
     : ratio >= 0.25
     ? ['very negative', 'fear', red]

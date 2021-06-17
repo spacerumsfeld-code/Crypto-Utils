@@ -23,8 +23,10 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Container
+        p="1rem"
         h="100%"
-        maxW="70%"
+        borderRadius="8px"
+        maxW={['80%', '70%']}
         bg={bg}
         shadow="rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px"
       >
@@ -38,22 +40,25 @@ export default function About() {
           <Text fontSize={['0.9em', '1.3em']}>
             A Minimalist Digital Cryptocurrency Utility Platform
           </Text>
-          <Text my={4}>
+          <Text fontSize={['md', 'lg']} my={[null, 10]}>
             Crypto-Utils is designed to be your one-stop shop for a variety of
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
+            Stay tuned, as new utilities are being added!
           </Text>
-          <SimpleGrid space={10} columns={[1, 3]}>
+          <SimpleGrid mt={[null, 17]} space={10} columns={[1, 3]}>
             <AboutFeature
               icon={<Icon as={FcAreaChart} w={10} h={10} />}
               title={'Live Price Data'}
-              text={'Get live price data and stuff'}
+              text={
+                'Get live price data and metrics for your favorite asset [IN PRODUCTION]'
+              }
             />
             <AboutFeature
               icon={<Icon as={FcCurrencyExchange} w={10} h={10} />}
               title={'Cryptocurrency Converter'}
               text={
-                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency'
+                'Instantly see the value of your cryptocurrencies in fiat terms or in terms of  another cryptocurrency [IN PRODUCTION]'
               }
             />
             <AboutFeature
@@ -66,7 +71,9 @@ export default function About() {
                 />
               }
               title={'Sentiment Analyzer'}
-              text={'Get the latest market sentiment'}
+              text={
+                'Get a daily recap of market sentiment towards your favorite asset [LIVE]'
+              }
             />
           </SimpleGrid>
         </Flex>

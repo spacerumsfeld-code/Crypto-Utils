@@ -9,7 +9,7 @@ type FeatureProps = {
 
 const AboutFeature = ({ title, text, icon }: FeatureProps) => {
   return (
-    <Stack align="center">
+    <Stack align="center" fontSize={['md', 'lg']}>
       <Flex
         w={16}
         h={16}
@@ -17,6 +17,7 @@ const AboutFeature = ({ title, text, icon }: FeatureProps) => {
         justify={'center'}
         rounded={'full'}
         bg={'gray.100'}
+        mt={2}
         mb={1}
       >
         {icon}

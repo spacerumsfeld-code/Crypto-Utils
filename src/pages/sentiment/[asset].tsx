@@ -1,4 +1,5 @@
 import {
+  Container,
   Flex,
   Box,
   Stack,
@@ -6,7 +7,8 @@ import {
   AccordionItem,
   AccordionIcon,
   AccordionButton,
-  AccordionPanel
+  AccordionPanel,
+  useColorModeValue
 } from '@chakra-ui/react';
 
 import SHeader from '@/sentimentComponents/SHeader';
@@ -33,47 +35,59 @@ const SentimentPage = ({
   asset,
   positiveTweets,
   negativeTweets
-}: SentimentPageProps) => (
-  <Flex direction="column" justifyContent="flex-start" alignItems="center">
-    <SHeader asset={asset} />
-    <AssetIcon asset={asset} />
-    <Stack w={['80%', '70%']}>
-      <Summary
-        asset={asset}
-        positiveCount={positiveTweets.length}
-        negativeCount={negativeTweets.length}
-      />
-      <Accordion allowMultiple allowToggle>
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex={1} textAlign="center">
-                Positive Tweets
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel>
-            <PositiveTweets positive={positiveTweets} />
-          </AccordionPanel>
-        </AccordionItem>
-        <AccordionItem>
-          <h2>
-            <AccordionButton>
-              <Box flex={1} textAlign="center">
-                Negative Tweets
-              </Box>
-              <AccordionIcon />
-            </AccordionButton>
-          </h2>
-          <AccordionPanel>
-            <NegativeTweets negative={negativeTweets} />
-          </AccordionPanel>
-        </AccordionItem>
-      </Accordion>
-    </Stack>
-  </Flex>
-);
+}: SentimentPageProps) => {
+  const bg = useColorModeValue('white', 'gray.800');
+  return (
+    <Container
+      borderRadius="8px"
+      h="100%"
+      p="1rem"
+      maxW={['80%', '70%']}
+      bg={bg}
+      shadow="rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px"
+    >
+      <Flex direction="column" justifyContent="flex-start" alignItems="center">
+        <SHeader asset={asset} />
+        <AssetIcon asset={asset} />
+        <Stack w={['80%', '70%']}>
+          <Summary
+            asset={asset}
+            positiveCount={positiveTweets.length}
+            negativeCount={negativeTweets.length}
+          />
+          <Accordion allowMultiple allowToggle>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex={1} textAlign="center">
+                    Positive Tweets
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel>
+                <PositiveTweets positive={positiveTweets} />
+              </AccordionPanel>
+            </AccordionItem>
+            <AccordionItem>
+              <h2>
+                <AccordionButton>
+                  <Box flex={1} textAlign="center">
+                    Negative Tweets
+                  </Box>
+                  <AccordionIcon />
+                </AccordionButton>
+              </h2>
+              <AccordionPanel>
+                <NegativeTweets negative={negativeTweets} />
+              </AccordionPanel>
+            </AccordionItem>
+          </Accordion>
+        </Stack>
+      </Flex>
+    </Container>
+  );
+};
 
 export const getStaticPaths: GetStaticPaths = async () => {
   return {
@@ -111,7 +125,8 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       asset,
       positiveTweets,
       negativeTweets
-    }
+    },
+    revalidate: 60 * 60 * 24
   };
 };
 
