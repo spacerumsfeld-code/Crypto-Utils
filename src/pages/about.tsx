@@ -40,7 +40,7 @@ export default function About() {
           <Text fontSize={['0.9em', '1.3em']}>
             A Minimalist Digital Cryptocurrency Utility Platform
           </Text>
-          <Text fontSize={['md', 'lg']} my={[null, 10]}>
+          <Text fontSize={['md', 'lg']} my={8}>
             Crypto-Utils is designed to be your one-stop shop for a variety of
             digital cryptocurrency utilities. You shouldn&apos;t have to scour
             the web for your favorite tools, and now you don&apos;t have to!
