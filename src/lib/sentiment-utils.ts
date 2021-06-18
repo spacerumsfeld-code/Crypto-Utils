@@ -14,7 +14,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=50`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
@@ -30,6 +30,8 @@ const getTweets = async (
     console.log(err);
   }
 };
+
+/* The type/interface below are not used in the request, but are still a helpful reference
 
 type KeyWord = {
   word: string;
@@ -47,6 +49,7 @@ interface SentimentDataPoint {
   result_code: string;
   result_msg: string;
 }
+*/
 
 const analyzeSentiment = async (
   tweets: Tweet[]
@@ -57,6 +60,7 @@ const analyzeSentiment = async (
   const promises = [];
   try {
     for (const tweet of tweets) {
+      console.log('heyooo');
       promises.push(
         // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
         axios.get(url!, {
@@ -66,11 +70,9 @@ const analyzeSentiment = async (
       );
     }
     const responses: AxiosResponse[] = await Promise.all(promises);
-    const sentimentData: SentimentDataPoint[] = responses.map(
-      (response) => response.data
-    );
+    console.log('--------Promise Resolution Complete');
     for (let i = 0; i < tweets.length; i++) {
-      tweets[i]['sentiment'] = sentimentData[i].type;
+      tweets[i]['sentiment'] = responses[i].data.type;
     }
     return tweets;
   } catch (err) {
