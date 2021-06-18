@@ -1,9 +1,10 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-type Tweet = {
+interface Tweet {
   id: string;
   text: string;
-};
+  sentiment?: string;
+}
 
 //'asset' is cast as possibly undefined or an array of strings here even though it never will be in order to make typescript happy. this originates in the loose typing of 'params' in the getStaticProps function seen in the [asset] page.
 
@@ -13,7 +14,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=1`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
@@ -30,29 +31,12 @@ const getTweets = async (
   }
 };
 
-// {
-//   "type": "negative",
-//   "score": -0.631041285,
-//   "ratio": -1,
-//   "keywords": [
-//       {
-//           "word": "scam",
-//           "score": -0.631041285
-//       }
-//   ],
-//   "version": "7.0.8",
-//   "author": "twinword inc.",
-//   "email": "help@twinword.com",
-//   "result_code": "200",
-//   "result_msg": "Success"
-// }
-
 type KeyWord = {
   word: string;
   score: number;
 };
 
-type SentimentDataPoint = {
+interface SentimentDataPoint {
   type: string;
   score: number;
   ratio: number;
@@ -62,71 +46,36 @@ type SentimentDataPoint = {
   email: string;
   result_code: string;
   result_msg: string;
-};
+}
 
-const analyzeSentiment = async (tweets: Tweet[]) => {
+const analyzeSentiment = async (
+  tweets: Tweet[]
+): Promise<Tweet[] | undefined> => {
+  const url = process.env.SENTIMENT_API;
+  const key = process.env.SENTIMENT_KEY;
+  const host = process.env.SENTIMENT_HOST;
+  const promises = [];
   try {
-    let text: string;
-    const options: AxiosRequestConfig = {
-      method: 'Post',
-      url: `${process.env.SENTIMENT_API}`,
-      headers: {
-        'content-type': 'application/x-www-form-urlencoded',
-        'x-rapidapi-key': `${process.env.SENTIMENT_KEY}`,
-        'x-rapidapi-host': `${process.env.SENTIMENT_HOST}`
-      },
-      data: { text: text }
-    };
-    for (let tweet of tweets) {
-      text = tweet.text;
-      const response: AxiosResponse = await axios(options);
-      const sentiment: SentimentDataPoint = response.data;
-      tweet['sentiment'] = sentiment.type;
+    for (const tweet of tweets) {
+      promises.push(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        axios.get(url!, {
+          headers: { 'x-rapidapi-key': key, 'x-rapidapi-host': host },
+          params: { text: tweet.text }
+        })
+      );
+    }
+    const responses: AxiosResponse[] = await Promise.all(promises);
+    const sentimentData: SentimentDataPoint[] = responses.map(
+      (response) => response.data
+    );
+    for (let i = 0; i < tweets.length; i++) {
+      tweets[i]['sentiment'] = sentimentData[i].type;
     }
     return tweets;
   } catch (err) {
     console.log(err);
   }
-};
-
-// const analyzeSentiment = async (
-//   tweets: Tweet[]
-// ): Promise<SentimentDataPoint[] | undefined> => {
-//   const processedTweets = tweets.map(({ text }) => text);
-//   try {
-//     const options: AxiosRequestConfig = {
-//       method: 'POST',
-//       //new url
-//       url: `${process.env.MONKEY_API}`,
-//       headers: {
-//         //new headers
-//         Authorization: `Token ${process.env.MONKEY_TOKEN}`,
-//         'Content-Type': 'application/json'
-//       },
-//       data: {
-//         //will data still work?
-//         data: processedTweets
-//       }
-//     };
-//     const response: AxiosResponse = await axios(options);
-//     const newTweets: SentimentDataPoint[] = response.data;
-//     return newTweets;
-//   } catch (err) {
-//     console.log(err);
-//   }
-// };
-
-type FormattedTweet = {
-  text: string;
-  sentiment: string;
-};
-
-const formatData = (sentimentData: SentimentDataPoint[]): FormattedTweet[] => {
-  const finalTweets = sentimentData.map((dataPoint) => ({
-    text: dataPoint.text,
-    sentiment: dataPoint.classifications[0].tag_name
-  }));
-  return finalTweets;
 };
 
 const setSentiment = (
@@ -138,11 +87,12 @@ const setSentiment = (
   const red = 'red.500';
 
   if (ratio === 0) return ['extremely positive', 'euphoria', 'green'];
-  else if (positiveCount === negativeCount)
+  else if (positiveCount === negativeCount) {
     return ['neutral', 'uncertainty', 'gray.500'];
+  }
 
   return ratio >= 3
-    ? ['extremely positive', 'euphoria', green]
+    ? ['extremely positive', 'extreme optimism', green]
     : ratio >= 1.5
     ? ['quite positive', 'excitement', green]
     : ratio >= 0.4
@@ -152,5 +102,5 @@ const setSentiment = (
     : ['extremely negative', 'panic', red];
 };
 
-const utils = { getTweets, analyzeSentiment, formatData, setSentiment };
+const utils = { getTweets, analyzeSentiment, setSentiment };
 export default utils;

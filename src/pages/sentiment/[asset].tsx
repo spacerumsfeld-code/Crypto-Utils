@@ -108,12 +108,11 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   const sentimentData = await utils.analyzeSentiment(tweets);
   if (!sentimentData) return { notFound: true };
 
-  const formattedTweets = utils.formatData(sentimentData);
-  const positiveTweets = formattedTweets.filter(
-    ({ sentiment }) => sentiment === 'Positive'
+  const positiveTweets = sentimentData.filter(
+    ({ sentiment }) => sentiment === 'positive'
   );
-  const negativeTweets = formattedTweets.filter(
-    ({ sentiment }) => sentiment === 'Negative'
+  const negativeTweets = sentimentData.filter(
+    ({ sentiment }) => sentiment === 'negative'
   );
   //this check is necessitated by Next's loose typing of 'params'; I know it will always be a string, but typescript thinks it may not be.
   if (typeof asset === 'string') {
