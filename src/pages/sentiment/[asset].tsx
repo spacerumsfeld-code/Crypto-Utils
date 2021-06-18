@@ -126,7 +126,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       positiveTweets,
       negativeTweets
     },
-    revalidate: 60 * 60 * 24
+    revalidate: 60 * 60
   };
 };
 
