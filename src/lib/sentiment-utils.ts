@@ -1,9 +1,10 @@
 import axios, { AxiosResponse, AxiosRequestConfig } from 'axios';
 
-type Tweet = {
+interface Tweet {
   id: string;
   text: string;
-};
+  sentiment?: string;
+}
 
 //'asset' is cast as possibly undefined or an array of strings here even though it never will be in order to make typescript happy. this originates in the loose typing of 'params' in the getStaticProps function seen in the [asset] page.
 
@@ -13,7 +14,7 @@ const getTweets = async (
   try {
     const options: AxiosRequestConfig = {
       method: 'GET',
-      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=100`,
+      url: `https://api.twitter.com/2/tweets/search/recent?query=${asset}&max_results=10`,
       headers: {
         id: '1',
         'Content-Type': 'application/json',
@@ -30,18 +31,27 @@ const getTweets = async (
   }
 };
 
-type SentimentDataPoint = {
-  text: string;
-  external_id: boolean;
-  error: boolean;
-  classifications: ClassificationData[];
+/* The type/interface below are not used in the request, but are still a helpful reference
+
+type KeyWord = {
+  word: string;
+  score: number;
 };
 
-type ClassificationData = {
-  tag_name: string;
-  tag_id: number;
-  confidence: number;
-};
+interface SentimentDataPoint {
+  type: string;
+  score: number;
+  ratio: number;
+  keywords: KeyWord[];
+  version: string;
+  author: string;
+  email: string;
+  result_code: string;
+  result_msg: string;
+}
+*/
+
+/* MonkeyLearn API for alternative sentiment analysis
 
 const analyzeSentiment = async (
   tweets: Tweet[]
@@ -66,18 +76,35 @@ const analyzeSentiment = async (
     console.log(err);
   }
 };
+*/
 
-type FormattedTweet = {
-  text: string;
-  sentiment: string;
-};
-
-const formatData = (sentimentData: SentimentDataPoint[]): FormattedTweet[] => {
-  const finalTweets = sentimentData.map((dataPoint) => ({
-    text: dataPoint.text,
-    sentiment: dataPoint.classifications[0].tag_name
-  }));
-  return finalTweets;
+const analyzeSentiment = async (
+  tweets: Tweet[]
+): Promise<Tweet[] | undefined> => {
+  const url = process.env.SENTIMENT_API;
+  const key = process.env.SENTIMENT_KEY;
+  const host = process.env.SENTIMENT_HOST;
+  const promises = [];
+  try {
+    for (const tweet of tweets) {
+      console.log('heyooo');
+      promises.push(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        axios.get(url!, {
+          headers: { 'x-rapidapi-key': key, 'x-rapidapi-host': host },
+          params: { text: tweet.text }
+        })
+      );
+    }
+    const responses: AxiosResponse[] = await Promise.all(promises);
+    console.log('--------Promise Resolution Complete');
+    for (let i = 0; i < tweets.length; i++) {
+      tweets[i]['sentiment'] = responses[i].data.type;
+    }
+    return tweets;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 const setSentiment = (
@@ -89,11 +116,12 @@ const setSentiment = (
   const red = 'red.500';
 
   if (ratio === 0) return ['extremely positive', 'euphoria', 'green'];
-  else if (positiveCount === negativeCount)
+  else if (positiveCount === negativeCount) {
     return ['neutral', 'uncertainty', 'gray.500'];
+  }
 
   return ratio >= 3
-    ? ['extremely positive', 'euphoria', green]
+    ? ['extremely positive', 'extreme optimism', green]
     : ratio >= 1.5
     ? ['quite positive', 'excitement', green]
     : ratio >= 0.4
@@ -103,5 +131,5 @@ const setSentiment = (
     : ['extremely negative', 'panic', red];
 };
 
-const utils = { getTweets, analyzeSentiment, formatData, setSentiment };
+const utils = { getTweets, analyzeSentiment, setSentiment };
 export default utils;
