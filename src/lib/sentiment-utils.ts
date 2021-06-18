@@ -51,6 +51,33 @@ interface SentimentDataPoint {
 }
 */
 
+/* MonkeyLearn API for alternative sentiment analysis
+
+const analyzeSentiment = async (
+  tweets: Tweet[]
+): Promise<SentimentDataPoint[] | undefined> => {
+  const processedTweets = tweets.map(({ text }) => text);
+  try {
+    const options: AxiosRequestConfig = {
+      method: 'POST',
+      url: `${process.env.MONKEY_API}`,
+      headers: {
+        Authorization: `Token ${process.env.MONKEY_TOKEN}`,
+        'Content-Type': 'application/json'
+      },
+      data: {
+        data: processedTweets
+      }
+    };
+    const response: AxiosResponse = await axios(options);
+    const newTweets: SentimentDataPoint[] = response.data;
+    return newTweets;
+  } catch (err) {
+    console.log(err);
+  }
+};
+*/
+
 const analyzeSentiment = async (
   tweets: Tweet[]
 ): Promise<Tweet[] | undefined> => {
