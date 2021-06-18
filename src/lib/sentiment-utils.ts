@@ -64,7 +64,29 @@ type SentimentDataPoint = {
   result_msg: string;
 };
 
-const analyzeSentiment = async (tweets: Tweet[]
+const analyzeSentiment = async (tweets: Tweet[]) => {
+  try {
+    let text: string;
+    const options: AxiosRequestConfig = {
+      method: 'Post',
+      url: `${process.env.SENTIMENT_API}`,
+      headers: {
+        'content-type': 'application/x-www-form-urlencoded',
+        'x-rapidapi-key': `${process.env.SENTIMENT_KEY}`,
+        'x-rapidapi-host': `${process.env.SENTIMENT_HOST}`
+      },
+      data: { text: text }
+    };
+    for (let tweet of tweets) {
+      text = tweet.text;
+      const response: AxiosResponse = await axios(options);
+      const sentiment: SentimentDataPoint = response.data;
+      tweet['sentiment'] = sentiment.type;
+    }
+    return tweets;
+  } catch (err) {
+    console.log(err);
+  }
 };
 
 // const analyzeSentiment = async (
