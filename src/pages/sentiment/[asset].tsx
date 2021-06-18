@@ -21,6 +21,7 @@ import { GetStaticProps, GetStaticPaths } from 'next';
 import utils from '@/lib/sentiment-utils';
 
 type Tweet = {
+  id: string;
   text: string;
   sentiment: string;
 };
