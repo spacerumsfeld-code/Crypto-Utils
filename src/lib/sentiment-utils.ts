@@ -31,31 +31,22 @@ const getTweets = async (
   }
 };
 
-/* The type/interface below are not used in the request, but are still a helpful reference
-
-type KeyWord = {
-  word: string;
-  score: number;
+type SentimentDataPoint = {
+  text: string;
+  external_id: boolean;
+  error: boolean;
+  classifications: ClassificationData[];
 };
 
-interface SentimentDataPoint {
-  type: string;
-  score: number;
-  ratio: number;
-  keywords: KeyWord[];
-  version: string;
-  author: string;
-  email: string;
-  result_code: string;
-  result_msg: string;
-}
-*/
-
-/* MonkeyLearn API for alternative sentiment analysis
+type ClassificationData = {
+  tag_name: string;
+  tag_id: number;
+  confidence: number;
+};
 
 const analyzeSentiment = async (
   tweets: Tweet[]
-): Promise<SentimentDataPoint[] | undefined> => {
+): Promise<Tweet[] | undefined> => {
   const processedTweets = tweets.map(({ text }) => text);
   try {
     const options: AxiosRequestConfig = {
@@ -70,36 +61,9 @@ const analyzeSentiment = async (
       }
     };
     const response: AxiosResponse = await axios(options);
-    const newTweets: SentimentDataPoint[] = response.data;
-    return newTweets;
-  } catch (err) {
-    console.log(err);
-  }
-};
-*/
-
-const analyzeSentiment = async (
-  tweets: Tweet[]
-): Promise<Tweet[] | undefined> => {
-  const url = process.env.SENTIMENT_API;
-  const key = process.env.SENTIMENT_KEY;
-  const host = process.env.SENTIMENT_HOST;
-  const promises = [];
-  try {
-    for (const tweet of tweets) {
-      console.log('heyooo');
-      promises.push(
-        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-        axios.get(url!, {
-          headers: { 'x-rapidapi-key': key, 'x-rapidapi-host': host },
-          params: { text: tweet.text }
-        })
-      );
-    }
-    const responses: AxiosResponse[] = await Promise.all(promises);
-    console.log('--------Promise Resolution Complete');
+    const sentimentData: SentimentDataPoint[] = response.data;
     for (let i = 0; i < tweets.length; i++) {
-      tweets[i]['sentiment'] = responses[i].data.type;
+      tweets[i]['sentiment'] = sentimentData[i].classifications[0].tag_name;
     }
     return tweets;
   } catch (err) {
@@ -133,3 +97,53 @@ const setSentiment = (
 
 const utils = { getTweets, analyzeSentiment, setSentiment };
 export default utils;
+
+/* ------ Alternative API implementation -----
+The type/interface below are not used in the request, but are still a helpful reference
+
+type KeyWord = {
+  word: string;
+  score: number;
+};
+
+interface SentimentDataPoint {
+  type: string;
+  score: number;
+  ratio: number;
+  keywords: KeyWord[];
+  version: string;
+  author: string;
+  email: string;
+  result_code: string;
+  result_msg: string;
+}
+
+const analyzeSentiment = async (
+  tweets: Tweet[]
+): Promise<Tweet[] | undefined> => {
+  const url = process.env.SENTIMENT_API;
+  const key = process.env.SENTIMENT_KEY;
+  const host = process.env.SENTIMENT_HOST;
+  const promises = [];
+  try {
+    for (const tweet of tweets) {
+      console.log('heyooo');
+      promises.push(
+        // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+        axios.get(url!, {
+          headers: { 'x-rapidapi-key': key, 'x-rapidapi-host': host },
+          params: { text: tweet.text }
+        })
+      );
+    }
+    const responses: AxiosResponse[] = await Promise.all(promises);
+    console.log('--------Promise Resolution Complete');
+    for (let i = 0; i < tweets.length; i++) {
+      tweets[i]['sentiment'] = responses[i].data.type;
+    }
+    return tweets;
+  } catch (err) {
+    console.log(err);
+  }
+};
+*/
