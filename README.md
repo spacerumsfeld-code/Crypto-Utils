@@ -1,4 +1,4 @@
-# Javascript Data Structure/Algorithm Refresher
+# Crypto-Utils
 
 by Nick Papadakis
 
